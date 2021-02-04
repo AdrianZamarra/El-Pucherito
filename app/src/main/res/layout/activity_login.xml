@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_login"
+                    android:id="@+id/tv_signin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -34,13 +34,13 @@
             android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/login_et_username"
+                    android:id="@+id/sign_et_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90sp"
                     android:layout_marginTop="50sp"
                     android:layout_marginRight="90sp"
-                    android:background="@color/thirdColor"
+                    android:background="@color/Grey"
                     android:ems="10"
                     android:gravity="center"
                     android:hint="@string/username"
@@ -55,13 +55,13 @@
             android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/login_et_password"
+                    android:id="@+id/sign_et_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90sp"
                     android:layout_marginTop="50sp"
                     android:layout_marginRight="90sp"
-                    android:background="@color/thirdColor"
+                    android:background="@color/Grey"
                     android:ems="10"
                     android:gravity="center"
                     android:hint="@string/username"
