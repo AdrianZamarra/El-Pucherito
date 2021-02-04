@@ -6,7 +6,7 @@
 
     <!-- Colores de aplicacion-->
 
-    <color name="mainColor">#6E0023</color>
-    <color name="secondColor">#ffffff</color>
-    <color name="thirdColor">#CDCDCD</color>
+    <color name="Garnet">#6E0023</color>
+    <color name="White">#ffffff</color>
+    <color name="Grey">#CACACA</color>
 </resources>
