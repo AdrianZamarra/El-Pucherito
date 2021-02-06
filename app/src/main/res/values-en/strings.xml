@@ -2,5 +2,12 @@
 <resources>
 
     <string name="app_name">ElPucherito</string>
+    <string name="login">Log In</string>
+    <string name="signin">Sign in</string>
+    <string name="email">E-Mail</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="stayIn">Stay In</string>
+    <string name="enter">-></string>
 
 </resources>
