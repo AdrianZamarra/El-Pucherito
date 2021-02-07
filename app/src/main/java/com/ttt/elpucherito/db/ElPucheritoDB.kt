@@ -1,6 +1,7 @@
 package com.ttt.elpucherito.db
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
@@ -14,6 +15,7 @@ import com.ttt.elpucherito.util.getJsonDataFromAsset
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import kotlin.coroutines.CoroutineContext
 
 @TypeConverters(Converters::class)
