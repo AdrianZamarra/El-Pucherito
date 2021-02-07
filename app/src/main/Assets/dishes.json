@@ -478,7 +478,128 @@
         
         "restaurant_id": 7
     },
-   
-    
+
+    {
+        "name": "Anchoas del Cantabrico",
+        "description": "Ensalada de anchoas con tomate de temporada, anchoas",
+        "price": 14.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Lomo de Bacalao Confitado",
+        "description": "Lomo de Bacalao cib crema de pisto manchego y chips vegetales",
+        "price": 18.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Oreja de cerdo",
+        "description": "Oreja de cerdo crujiente con Ali-Oli de citricos",
+        "price": 10.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Presa de cerdo iberico",
+        "description": "Presa de cerdo con salsa ligera de mostaza verde",
+        "price": 18.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Mollejas de cordero",
+        "description": "Mollejas refritas con ajos",
+        "price": 16.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Manitas de cerdo",
+        "description": "Manitas deshuesadas con salsa de tomate y pipas",
+        "price": 14.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Merluza de pincho",
+        "description": "Merluza al pil pil de coliflor y sardina ahumada",
+        "price": 16.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Buñuelos de bacalao",
+        "description": "Bacalao con pisto manchego y huevo frito",
+        "price": 10.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Tempura de langostinos",
+        "description": "Envuelta de mahonesa de pimenton asiatica",
+        "price": 12.00,
+        
+        "restaurant_id": 3
+    }, {
+        "name": "Tartar de salmon",
+        "description": "Salmon con Aguacate, lima y cilantro",
+        "price": 14.00,
+        
+        "restaurant_id": 3
+    },
+    {
+        "name": "Pulpo a la gallega",
+        "description": "Pulpo, patata codida y pimenton",
+        "price": 17.90,
+        
+        "restaurant_id": 4
+    }, {
+        "name": "Gazpacho pastor",
+        "description": "Base de tortas de ceceña, carnes de caza, cerdo y especies aromaticas",
+        "price": 8.50,
+        
+        "restaurant_id": 4
+    },    {
+        "name": "Sopa de marisco",
+        "description": "Caldo hervido de marisco y crustaceos frescos",
+        "price": 7.00,
+        
+        "restaurant_id": 4
+    }, {
+        "name": "Arroz con bogavante",
+        "description": "Arroz sofrito con verduras y bogavante",
+        "price": 34.00,
+        
+        "restaurant_id": 4
+    },    {
+        "name": "Carre de cordero asado",
+        "description": "Cordeso asado con guarnicion de patatas",
+        "price": 16.50,
+        
+        "restaurant_id": 4
+    }, {
+        "name": "Pluma de cerdo iberico",
+        "description": "Pieza de cerdo alineada con hierbas aromaticas y verduras",
+        "price": 15.00,
+        
+        "restaurant_id": 4
+    },{
+        "name": "Rodaballo con fritura de gambon",
+        "description": "Rodaballo, gambon",
+        "price": 18.00,
+        
+        "restaurant_id": 4
+    },{
+        "name": "Bacalao al horno con pisto manchego",
+        "description": "Bacalao bañado en pisto manchego",
+        "price": 16.90,
+        
+        "restaurant_id": 4
+    },{
+        "name": "Solomillo de vaca",
+        "description": "Piezas de solomillo a la brasa",
+        "price": 19.50,
+        
+        "restaurant_id": 4
+    },
+    {
+        "name": "Flan de huevo",
+        "description": "Leche, huevo, esencia de naranja con base de caramelo",
+        "price": 4.50,
+        "restaurant_id": 4
+    }
 
 ]

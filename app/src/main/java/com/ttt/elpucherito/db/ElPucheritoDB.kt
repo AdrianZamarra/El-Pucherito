@@ -37,7 +37,7 @@ companion object {
                     "el_pucherito_db"
                 ).build();
                 db!!.fillRestaurantsFromJsonPath(context.getApplicationContext(),"restaurants.json")
-                db!!.fillDishesFromJsonPath(context.getApplicationContext(),"restaurants.json")
+                db!!.fillDishesFromJsonPath(context.getApplicationContext(),"dishes.json")
 
             }
             return db as ElPucheritoDB;
