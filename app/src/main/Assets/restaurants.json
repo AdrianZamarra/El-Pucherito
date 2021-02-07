@@ -4,16 +4,15 @@
         "name": "Essentia",
         "address": "Av. Adolfo Suárez, 30, 16400 Tarancón, Cuenca",
         "category": "Gourmet",
-        "image": "@drawable/essentia",
-        "assessment": 0.0
+        "image": "essentia"
     },
    {
         "restaurant_id": null,
         "name": "géminis",
         "address": "Calle San Isidro, 5, 16400 Tarancón, Cuenca",
         "category": "Comida Rápida",
-        "image": "@drawable/geminis",
-        "assessment": 0.0
+        "image": "geminis"
+
     },
 
    {
@@ -21,8 +20,7 @@
         "name": "Tio toria",
         "address": "Av. Miguel de Cervantes, 93, 16400 Tarancón, Cuenca",
         "category": "Familiar",
-        "image": "@drawable/tio_toria",
-        "assessment": 0.0
+        "image": "tio_toria"
     },
 
    {
@@ -30,8 +28,8 @@
         "name": "Cocedero",
         "address": "Av. Adolfo Suárez, 64, 16400 Tarancón, Cuenca",
         "category": "Gourmet",
-        "image": "@drawable/cocedero",
-        "assessment": 0.0
+        "image": "cocedero"
+
     },
 
    {
@@ -39,8 +37,7 @@
         "name": "Hayi baba",
         "address": "Av. Pablo Iglesias, 6, 16400 Tarancón, Cuenca",
         "category": "Tématico",
-        "image": "@drawable/hayi_baba",
-        "assessment": 0.0
+        "image": "hayi_baba"
     },
 
    {
@@ -48,8 +45,7 @@
         "name": "far west",
         "address": "Plaza del Ayuntamiento, 2, 16400 Tarancón, Cuenca",
         "category": "Familiar",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "far_west"
     },
 
    {
@@ -57,8 +53,7 @@
         "name": "Aporpizza",
         "address": "Av. Miguel de Cervantes, 126, BAJO, 16400 Tarancón, Cuenca",
         "category": "Comida Rápida",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "aporpizza"
     },
 
    {
@@ -66,8 +61,7 @@
         "name": "Keller",
         "address": "Av. Miguel de Cervantes, 42, 16400 Tarancón, Cuenca",
         "category": "Gourmet",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "keller"
     },
 
    {
@@ -75,8 +69,7 @@
         "name": "Versalles",
         "address": "Av. Miguel de Cervantes, 79, 16400 Tarancón, Cuenca",
         "category": "Familiar",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "versalles"
     },
 
    {
@@ -84,8 +77,7 @@
         "name": "El Campanillo",
         "address": "Av. Miguel de Cervantes, 83, 16400 Tarancón, Cuenca",
         "category": "Familiar",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "campanillo"
     },
 
 
@@ -94,8 +86,7 @@
         "name": "La Rue",
         "address": "Calle Juan Ramón Jiménez, 3, 16400 Tarancón, Cuenca",
         "category": "Comida Rápida",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "la_rue"
     },
 
    {
@@ -103,8 +94,7 @@
         "name": "Bufón",
         "address": "Calle Azorín, 6, 16400 Tarancón, Cuenca",
         "category": "Comida Rápida",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "bufon"
     },
 
    {
@@ -112,8 +102,7 @@
         "name": "Pijote",
         "address": "Calle Antonio Machado, 16400 Tarancón, Cuenca",
         "category": "Familiar",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "pijote"
     },
 
    {
@@ -121,8 +110,7 @@
         "name":"Restaurante Oriental Yi" ,
         "address": "BIS, Calle Antonio Machado, 4, 16400 Tarancón, Cuenca",
         "category": "Tématica",
-        "image": "@drawable/aporpizza",
-        "assessment": 0.0
+        "image": "oriental_yi"
     }
 
 ]
