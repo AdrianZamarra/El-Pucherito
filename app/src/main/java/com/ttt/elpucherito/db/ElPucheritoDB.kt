@@ -34,15 +34,24 @@ companion object {
                 db = databaseBuilder(
                     context.getApplicationContext(),
                     ElPucheritoDB::class.java,
-                    "database-name"
+                    "el_pucherito_db"
                 ).build();
+                db!!.fillRestaurantsFromJsonPath(context.getApplicationContext(),"restaurants.json")
+                db!!.fillDishesFromJsonPath(context.getApplicationContext(),"restaurants.json")
+
             }
             return db as ElPucheritoDB;
     }
 
+    private fun fillRestaurantsFromJsonPath(applicationContext: Context?, s: String) {
+
     }
+
+
+}
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
+
         fun fillRestaurantsFromJsonPath(context: Context, jsonPath: String){
 
             val jsonFileString = getJsonDataFromAsset(context, jsonPath)

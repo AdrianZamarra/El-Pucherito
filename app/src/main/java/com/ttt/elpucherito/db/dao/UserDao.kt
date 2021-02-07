@@ -1,9 +1,6 @@
 package com.ttt.elpucherito.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.ttt.elpucherito.db.entity.User
 
 @Dao
@@ -14,6 +11,9 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUser(user: User)
+
+    @Update
+    suspend fun updateUser(user:User)
 
     @Query("DELETE FROM users")
     suspend fun deleteAll()

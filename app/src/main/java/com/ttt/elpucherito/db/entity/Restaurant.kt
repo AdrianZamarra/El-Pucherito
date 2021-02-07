@@ -20,8 +20,7 @@ data class Restaurant(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "address") val address: String,
     @ColumnInfo(name = "category") val category: String,
-    @ColumnInfo(name = "image") val image : String,
-    @ColumnInfo(name = "assessment") val assessment: Float
+    @ColumnInfo(name = "image") val image : String
 
     )
 
