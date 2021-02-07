@@ -1,0 +1,86 @@
+{       
+    {
+        "name": "Essentia",//1
+        "address": "Av. Adolfo Suárez, 30, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+   {
+        "name": "géminis",//2
+        "address": "Calle San Isidro, 5, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Tio toria",//3
+        "address": "Av. Miguel de Cervantes, 93, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Cocedero",//4
+        "address": "Av. Adolfo Suárez, 64, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Hayi baba",//5
+        "address": "Av. Pablo Iglesias, 6, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "far west",//6
+        "address": "Plaza del Ayuntamiento, 2, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Aporpizza",//7
+        "address": "Av. Miguel de Cervantes, 126, BAJO, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Keller",//8
+        "address": "Av. Miguel de Cervantes, 42, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Versalles",//9
+        "address": "Av. Miguel de Cervantes, 79, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "El Campanillo",//10
+        "address": "Av. Miguel de Cervantes, 83, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+
+   {
+        "name": "La Rue",//11
+        "address": "Calle Juan Ramón Jiménez, 3, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Bufón",//12
+        "address": "Calle Azorín, 6, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name": "Pijote",//13
+        "address": "Calle Antonio Machado, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+   {
+        "name":"Restaurante Oriental Yi" ,//14
+        "address": "BIS, Calle Antonio Machado, 4, 16400 Tarancón, Cuenca",
+        "assesment": 0.0
+    },
+
+}
