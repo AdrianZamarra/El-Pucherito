@@ -24,7 +24,6 @@ class RestaurantActivity : AppCompatActivity() {
         val restaurantTvName : TextView  = findViewById(R.id.restaurant_tv_name)
         val restaurantAssesment : RatingBar = findViewById(R.id.restaurant_ratingbar)
 
-
         val restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
 
         restaurantTvName.text = restaurant.name
@@ -32,14 +31,27 @@ class RestaurantActivity : AppCompatActivity() {
         val id = this.resources.getIdentifier(restaurant.image, "drawable", this.packageName)
         restaurantAvatar.setImageResource(id)
 
-        restaurantAssesment.rating = restaurant.assesment
-
         val dishes : ArrayList<DishItem> = ArrayList()
 
         val recyclerView : RecyclerView = findViewById(R.id.restaurant_chart_dishes)
         recyclerView.adapter = ChartAdapter(dishes,this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
+    }
+
+    private fun getRatingOfUser() : Int {
+
+        var rating : Int = 0
+
+        Thread{
+            var db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
+
+            var restaurants = db.restaurantDao().getRestaurants()
+            var users = db.userDao().getUsers()
+            
+        }.start()
+
+        return rating
     }
 
 

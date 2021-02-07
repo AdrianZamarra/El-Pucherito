@@ -1,14 +1,10 @@
 package com.ttt.elpucherito.activity
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantsActivity
-
-
 
 class MainActivity : AppCompatActivity(){
 
@@ -17,9 +13,6 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
         var i = Intent(this, RestaurantsActivity::class.java)
         startActivity(i)
-
-
-    }
 
 
     }

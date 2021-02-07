@@ -39,7 +39,7 @@ class RestaurantsActivity : AppCompatActivity() {
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
             restaurantsList = db.restaurantDao().getRestaurants()
             restaurantsList.forEach {
-                restaurantItems.add(RestaurantItem(it.image, it.name, it.address, it.category, it.assessment))
+                restaurantItems.add(RestaurantItem(it.restaurant_id, it.image, it.name, it.address, it.category, 3f))
             }
         }.start()
         return restaurantItems
