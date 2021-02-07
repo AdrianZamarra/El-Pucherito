@@ -1,21 +1,38 @@
 package com.ttt.elpucherito.activity.restaurantActiviy
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantItem
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.Dish
-import com.ttt.elpucherito.db.entity.Restaurant
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 
 class RestaurantActivity : AppCompatActivity() {
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
+
+        val restaurantAvatar : ImageView = findViewById(R.id.restaurant_avatar)
+        val restaurantTvName : TextView  = findViewById(R.id.restaurant_tv_name)
+        val restaurantAssesment : RatingBar = findViewById(R.id.restaurant_ratingbar)
+
+
+        val restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
+
+        restaurantTvName.text = restaurant.name
+
+        val id = this.resources.getIdentifier(restaurant.image, "drawable", this.packageName)
+        restaurantAvatar.setImageResource(id)
+
+        restaurantAssesment.rating = restaurant.assesment
 
         val dishes : ArrayList<DishItem> = ArrayList()
 
