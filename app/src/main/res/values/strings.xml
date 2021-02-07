@@ -12,4 +12,29 @@
     <string name="login_failed">"Login failed"</string>
     <string name="restaurants">RESTAURANTES</string>
 
+    <!---->
+
+    <string name="login">Registro</string>
+    <string name="signin">Registrate</string>
+
+    <!-- Acciones de la app -->
+
+    <string name="stayIn">Mantener conectado</string>
+    <string name="enter">--></string>
+    <string name="next">Siguiente</string>
+
+
+    <!-- Caracteristicas de USUARIO -->
+    <string name="name">Nombre</string>
+    <string name="surname">Apellidos</string>
+    <string name="phone">Telefono</string>
+    <string name="email">E-Mail</string>
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="address">Direccion</string>
+
+    <!-- TOAST MESSAGE -->
+
+    <string name="invalidUser">Usuario o contraseña erroneo</string>
+
 </resources>

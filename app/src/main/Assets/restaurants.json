@@ -1,0 +1,100 @@
+[
+    {
+        "restaurant_id": null,
+        "name": "Essentia",
+        "address": "Av. Adolfo Suárez, 30, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+   {
+        "restaurant_id": null,
+        "name": "géminis",
+        "address": "Calle San Isidro, 5, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Tio toria",
+        "address": "Av. Miguel de Cervantes, 93, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Cocedero",
+        "address": "Av. Adolfo Suárez, 64, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Hayi baba",
+        "address": "Av. Pablo Iglesias, 6, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "far west",
+        "address": "Plaza del Ayuntamiento, 2, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Aporpizza",
+        "address": "Av. Miguel de Cervantes, 126, BAJO, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Keller",
+        "address": "Av. Miguel de Cervantes, 42, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Versalles",
+        "address": "Av. Miguel de Cervantes, 79, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "El Campanillo",
+        "address": "Av. Miguel de Cervantes, 83, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+
+   {
+        "restaurant_id": null,
+        "name": "La Rue",
+        "address": "Calle Juan Ramón Jiménez, 3, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Bufón",
+        "address": "Calle Azorín, 6, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name": "Pijote",
+        "address": "Calle Antonio Machado, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    },
+
+   {
+        "restaurant_id": null,
+        "name":"Restaurante Oriental Yi" ,
+        "address": "BIS, Calle Antonio Machado, 4, 16400 Tarancón, Cuenca",
+        "assessment": 0.0
+    }
+
+]
