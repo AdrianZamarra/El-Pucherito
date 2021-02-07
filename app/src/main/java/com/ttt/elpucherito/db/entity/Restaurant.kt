@@ -1,30 +1,26 @@
 package com.ttt.elpucherito.db.entity
 
 
+import android.content.Context
+import android.util.Log
 import androidx.room.*
-
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.ttt.elpucherito.util.getJsonDataFromAsset
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 
 @Entity(tableName = "restaurants")
-class Restaurant(
-    @PrimaryKey(autoGenerate = true) val restaurant_id: Int,
+data class Restaurant(
 
+    @PrimaryKey(autoGenerate = true) val restaurant_id: Int?,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "address") val address: String,
-    @ColumnInfo(name = "assessment") val assessment: Float
-
+    @ColumnInfo(name = "assessment") val assessment: Float,
+    @ColumnInfo(name = "image") val image : String
 
 )
-@Dao
-interface RestaurantDao {
-
-    @Query("SELECT * FROM restaurants ORDER BY restaurant_id ASC")
-    fun getAlphabetizedWords(): List<Restaurant>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(restaurant: Restaurant)
-
-    @Query("DELETE FROM restaurants")
-    suspend fun deleteAll()
-}
 
