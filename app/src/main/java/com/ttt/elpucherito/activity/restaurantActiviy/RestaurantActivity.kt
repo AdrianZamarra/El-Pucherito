@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantItem
+import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.db.entity.Dish
+import com.ttt.elpucherito.db.entity.Restaurant
+import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 
 class RestaurantActivity : AppCompatActivity() {
 
@@ -14,13 +19,23 @@ class RestaurantActivity : AppCompatActivity() {
 
         val dishes : ArrayList<DishItem> = ArrayList()
 
-        for (i in 1..10){
-            dishes.add(DishItem("dish$i","desc$i","$i"))
-        }
-
         val recyclerView : RecyclerView = findViewById(R.id.restaurant_chart_dishes)
         recyclerView.adapter = ChartAdapter(dishes,this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
+    }
+
+
+    private fun getDishesFromRestaurant() : ArrayList<DishItem> {
+
+        val dishList : List<RestaurantWithDishes>
+        val dishItems : ArrayList<DishItem> = ArrayList()
+
+        val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
+
+        dishList = db.restaurantDao().getDishes()
+
+        return dishItems
+
     }
 }

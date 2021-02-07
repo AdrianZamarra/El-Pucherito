@@ -29,7 +29,7 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         val currentItem = restaurantsList[position]
 
         holder.name.text = currentItem.name
-        holder.image.setImageResource(currentItem.imageView)
+        holder.image.setImageResource(R.drawable.elabuelo)
         holder.bind(currentItem, context)
     }
 

@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.db.entity.ElPucheritoDB
+import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entity.User
 import kotlinx.android.synthetic.main.activity_sign.*
 import kotlinx.coroutines.CoroutineScope

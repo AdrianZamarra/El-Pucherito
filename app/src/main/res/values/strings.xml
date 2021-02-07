@@ -36,5 +36,8 @@
     <!-- TOAST MESSAGE -->
 
     <string name="invalidUser">Usuario o contraseña erroneo</string>
+    <string name="test_name">Nombre</string>
+    <string name="test_description">Descripcion</string>
+    <string name="test_price">precio€</string>
 
 </resources>

@@ -1,16 +1,12 @@
 package com.ttt.elpucherito.activity
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.annotation.StringDef
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.db.entity.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.User
-import kotlinx.android.synthetic.main.activity_login.*
+import com.ttt.elpucherito.db.ElPucheritoDB
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -71,7 +67,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
                 login_et_email?.text!!.clear()
                 login_et_password?.text!!.clear()
-                
+
                 println(db.userDao().getUsers())
 
 
@@ -84,7 +80,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             }
         }
-        }
-
     }
+
+}
 
