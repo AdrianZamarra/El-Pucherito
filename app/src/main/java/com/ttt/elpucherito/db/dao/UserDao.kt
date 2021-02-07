@@ -1,9 +1,10 @@
-package com.ttt.elpucherito.db.entity
+package com.ttt.elpucherito.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.ttt.elpucherito.db.entity.User
 
 @Dao
 interface UserDao {
@@ -18,5 +19,5 @@ interface UserDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM users WHERE email LIKE :email AND password LIKE :password")
-    fun getValidateUser(email : String , password : String):  User
+    fun getValidateUser(email : String , password : String): User
 }

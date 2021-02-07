@@ -7,7 +7,9 @@ import com.ttt.elpucherito.db.ElPucheritoDB
 import kotlin.concurrent.thread
 
 
+
 class MainActivity : AppCompatActivity(){
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

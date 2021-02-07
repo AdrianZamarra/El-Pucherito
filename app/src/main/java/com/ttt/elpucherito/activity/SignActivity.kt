@@ -63,7 +63,7 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
         val email = sign_et_email?.text.toString()
         val pass = sign_et_password?.text.toString()
 
-        var user: User = User(null, name, surname, address, phone, email, pass)
+        var user: User = User(null, name, surname, address, phone, email, pass,0)
 
         val thread = Thread {
 

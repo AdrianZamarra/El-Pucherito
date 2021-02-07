@@ -1,6 +1,7 @@
-package com.ttt.elpucherito.db.entity
+package com.ttt.elpucherito.db.dao
 
 import androidx.room.*
+import com.ttt.elpucherito.db.entity.Dish
 
 @Dao
 interface DishDao {
