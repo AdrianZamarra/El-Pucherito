@@ -31,9 +31,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 db.userDao().insertUser(user)
             }
 
-
-
-
             val messageList: List<User> =  db.userDao().getUsers()
             println("asdasads->>>> " + messageList)
         }

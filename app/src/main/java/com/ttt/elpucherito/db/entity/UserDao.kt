@@ -16,4 +16,7 @@ interface UserDao {
 
     @Query("DELETE FROM users")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM users WHERE email LIKE :email AND password LIKE :password")
+    fun getValidateUser(email : String , password : String):  User
 }

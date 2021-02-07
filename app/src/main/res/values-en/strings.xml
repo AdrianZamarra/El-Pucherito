@@ -4,10 +4,23 @@
     <string name="app_name">ElPucherito</string>
     <string name="login">Log In</string>
     <string name="signin">Sign in</string>
+
+    <string name="stayIn">Stay In</string>
+    <string name="enter">--></string>
+    <string name="next">Next</string>
+
+
+    <!-- USER characteristics -->
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="phone">Phone</string>
     <string name="email">E-Mail</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="stayIn">Stay In</string>
-    <string name="enter">-></string>
+    <string name="address">Address</string>
+
+    <!-- TOAST MESSAGE -->
+
+    <string name="invalidUser">Invalid user or password</string>
 
 </resources>
