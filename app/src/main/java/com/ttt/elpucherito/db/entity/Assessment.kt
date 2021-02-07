@@ -7,13 +7,12 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ttt.elpucherito.util.getJsonDataFromAsset
 
-@Entity(tableName = "dishes")
-data class Dish(
+@Entity(tableName = "assessments",indices = (arrayOf(Index( value = ["user_email"], unique = true))))
+data class Assessment(
 
-    @PrimaryKey(autoGenerate = true) val dish_id: Int?,
+    @PrimaryKey(autoGenerate = true) val assessments_id: Int?,
 
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "description") val description: String,
-    @ColumnInfo(name = "price") val price: Float,
+    @ColumnInfo(name = "user_email") val user_email: String,
+    @ColumnInfo(name = "rating") val rating: Float,
     @ColumnInfo(name = "restaurant_id") val restaurant_id: Int
 )

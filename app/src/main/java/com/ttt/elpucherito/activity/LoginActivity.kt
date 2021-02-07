@@ -1,16 +1,13 @@
 package com.ttt.elpucherito.activity
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.annotation.StringDef
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.db.entity.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.User
-import kotlinx.android.synthetic.main.activity_login.*
+import com.ttt.elpucherito.activity.restaurantActiviy.RestaurantActivity
+import com.ttt.elpucherito.db.ElPucheritoDB
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -27,6 +24,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
+
         login_tv_login = findViewById(R.id.login_tv_login)
         login_et_email = findViewById(R.id.login_et_email)
         login_et_password = findViewById(R.id.login_et_password)
@@ -35,7 +34,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         login_btn_singin = findViewById(R.id.login_btn_singin)
 
-        // Implemento setOnClickListener
         login_btn_enter!!.setOnClickListener(this)
 
 
@@ -65,26 +63,23 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             val user = db.userDao().getValidateUser(email, pass)
 
-            if (user == null) {
+            if (user != null) {
 
-                // TOAST y reiniciar campos
-                Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-                login_et_email?.text!!.clear()
-                login_et_password?.text!!.clear()
-                
-                println(db.userDao().getUsers())
+                user.logged = 1
+                db.userDao().updateUser(user)
+
+                val restaurantScreen = Intent(this, RestaurantActivity::class.java)
+                startActivity(restaurantScreen)
 
 
             } else {
-
-
-                // INTENT A SCREEN RESTAURANTES
-                //val restaurantScreen = Intent(this,RestaurantsActivity::class.java)
-                //startActivity(restaurantScreen)
+                Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
+                login_et_email?.text!!.clear()
+                login_et_password?.text!!.clear()
 
             }
         }
-        }
-
     }
+
+}
 

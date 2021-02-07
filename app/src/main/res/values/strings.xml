@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">ElPucherito</string>
+    <string name="restaurant_chart">CARTA</string>
+    <string name="title_activity_restaurants">RestaurantsActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="restaurants">RESTAURANTES</string>
 
     <!---->
 
@@ -30,5 +41,8 @@
     <!-- TOAST MESSAGE -->
 
     <string name="invalidUser">Usuario o contraseña erroneo</string>
+    <string name="test_name">Nombre</string>
+    <string name="test_description">Descripcion</string>
+    <string name="test_price">precio€</string>
 
 </resources>
