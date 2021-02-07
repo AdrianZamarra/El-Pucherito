@@ -65,22 +65,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             val user = db.userDao().getValidateUser(email, pass)
 
-            if (user == null) {
+            if (user != null) {
 
+                user.logged = 1
+                db.userDao().updateUser(user)
+
+                val restaurantScreen = Intent(this,RestaurantActivity::class.java)
+                startActivity(restaurantScreen)
+
+
+            } else {
                 // TOAST y reiniciar campos
                 Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
                 login_et_email?.text!!.clear()
                 login_et_password?.text!!.clear()
-                
-                println(db.userDao().getUsers())
-
-
-            } else {
-
-
-                // INTENT A SCREEN RESTAURANTES
-                //val restaurantScreen = Intent(this,RestaurantsActivity::class.java)
-                //startActivity(restaurantScreen)
 
             }
         }

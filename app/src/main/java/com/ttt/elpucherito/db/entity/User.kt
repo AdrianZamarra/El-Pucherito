@@ -14,6 +14,6 @@ data class User(
     @ColumnInfo(name = "phonenum") val phonenum: Int,
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "password") val password: String,
-    @ColumnInfo(name = "logged") val logged: Int
+    @ColumnInfo(name = "logged") var logged: Int
 
     )

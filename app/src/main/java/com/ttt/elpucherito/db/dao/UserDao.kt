@@ -9,11 +9,14 @@ interface UserDao {
     @Query("SELECT * FROM users ORDER BY user_id ASC")
     fun getUsers(): List<User>
 
+    @Query("SELECT * FROM users Where logged = 1")
+    fun getLoggedUser(): User
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertUser(user: User)
 
     @Update
-    suspend fun updateUser(user:User)
+    fun updateUser(user:User)
 
     @Query("DELETE FROM users")
     suspend fun deleteAll()
