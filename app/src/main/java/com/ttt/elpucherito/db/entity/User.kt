@@ -5,7 +5,7 @@ import androidx.room.*
 
 
 @Entity(tableName = "users")
-class User(
+data class User(
     @PrimaryKey(autoGenerate = true) val user_id: Int?,
 
     @ColumnInfo(name = "name") val name: String,
