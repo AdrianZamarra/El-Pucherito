@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity.restaurantsActivity.ui
+package com.ttt.elpucherito.activity.restaurantsActivity
 
 import android.content.Context
 import android.view.LayoutInflater

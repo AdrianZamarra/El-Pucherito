@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity.restaurantsActivity.ui
+package com.ttt.elpucherito.activity.restaurantsActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,11 +14,20 @@ class RestaurantsActivity : AppCompatActivity() {
         val restaurants : ArrayList<RestaurantItem> = ArrayList()
 
         for (i in 1..10){
-            restaurants.add(RestaurantItem(R.drawable.elabuelo,"Restaurante$i"))
+            restaurants.add(
+                RestaurantItem(
+                    R.drawable.elabuelo,
+                    "Restaurante$i"
+                )
+            )
         }
 
         val recyclerView : RecyclerView = findViewById(R.id.restaurants_recycler)
-        recyclerView.adapter = RestaurantAdapter( restaurants, this )
+        recyclerView.adapter =
+            RestaurantAdapter(
+                restaurants,
+                this
+            )
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
     }
