@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var i = Intent(this, RestaurantsActivity::class.java)
+        var i = Intent(this, LoginActivity::class.java)
         startActivity(i)
 
 

@@ -2,10 +2,13 @@ package com.ttt.elpucherito.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activity.restaurantActiviy.RestaurantActivity
+import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantsActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
 
 
@@ -33,9 +36,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         // Implemento setOnClickListener
         login_btn_enter!!.setOnClickListener(this)
-
-
-
     }
 
 
@@ -45,6 +45,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
+        println("entro en el login")
         login()
     }
 
@@ -60,23 +61,25 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
             val user = db.userDao().getValidateUser(email, pass)
-
             if (user != null) {
 
                 user.logged = 1
                 db.userDao().updateUser(user)
 
-                val restaurantScreen = Intent(this, RestaurantActivity::class.java)
+                val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
                 startActivity(restaurantScreen)
 
 
             } else {
-                Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-                login_et_email?.text!!.clear()
-                login_et_password?.text!!.clear()
+                //Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
+                println("me cago en dios")
+
 
             }
-        }
+        }.start()
+
+        login_et_email?.setText("")
+        login_et_password?.setText("")
     }
 
 }

@@ -11,5 +11,5 @@ data class RestaurantWithAssessments(
         parentColumn = "restaurant_id",
         entityColumn = "restaurant_id"
     )
-    val dishes: List<Assessment>
+    val assessments : List<Assessment>
 )

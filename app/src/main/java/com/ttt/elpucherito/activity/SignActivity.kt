@@ -65,7 +65,8 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
 
         var user: User = User(null, name, surname, address, phone, email, pass,0)
 
-        val thread = Thread {
+        println(user.name)
+        Thread {
 
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
@@ -74,8 +75,7 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
                 db.userDao().insertUser(user)
 
             }
-
-        }
+        }.start()
 
     }
     override fun onClick(p0: View?) {

@@ -33,7 +33,8 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         holder.name.text = currentItem.name
         val id = context.resources.getIdentifier(currentItem.image, "drawable", context.packageName)
         holder.image.setImageResource(id)
-        holder.assesment.rating = currentItem.assesment
+        // ARREGLAR
+        holder.assesment.rating = 3f
         holder.bind(currentItem, context)
     }
 

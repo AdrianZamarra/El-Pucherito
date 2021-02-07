@@ -13,6 +13,6 @@ data class Assessment(
     @PrimaryKey(autoGenerate = true) val assessments_id: Int?,
 
     @ColumnInfo(name = "user_email") val user_email: String,
-    @ColumnInfo(name = "rating") val description: Float,
+    @ColumnInfo(name = "rating") val rating: Float,
     @ColumnInfo(name = "restaurant_id") val restaurant_id: Int
 )
