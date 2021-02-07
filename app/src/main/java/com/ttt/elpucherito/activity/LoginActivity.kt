@@ -8,7 +8,7 @@ import android.widget.*
 import androidx.annotation.StringDef
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.db.entity.ElPucheritoDB
+import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entity.User
 import kotlinx.android.synthetic.main.activity_login.*
 

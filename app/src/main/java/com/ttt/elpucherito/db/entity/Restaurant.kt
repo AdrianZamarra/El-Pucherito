@@ -19,8 +19,9 @@ data class Restaurant(
     @PrimaryKey(autoGenerate = true) val restaurant_id: Int?,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "address") val address: String,
-    @ColumnInfo(name = "assessment") val assessment: Float,
-    @ColumnInfo(name = "image") val image : String
+    @ColumnInfo(name = "category") val category: String,
+    @ColumnInfo(name = "image") val image : String,
+    @ColumnInfo(name = "assessment") val assessment: Float
 
-)
+    )
 

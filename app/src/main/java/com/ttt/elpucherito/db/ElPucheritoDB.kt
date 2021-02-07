@@ -4,22 +4,27 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ttt.elpucherito.db.dao.*
 import com.ttt.elpucherito.db.entity.*
+import com.ttt.elpucherito.util.Converters
 import com.ttt.elpucherito.util.getJsonDataFromAsset
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-
-@Database(entities = [User::class, Dish::class, Restaurant::class], version = 1)
+@TypeConverters(Converters::class)
+@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishesShoppingCarts::class], version = 2)
 abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
 
     abstract fun userDao(): UserDao;
     abstract fun restaurantDao(): RestaurantDao;
     abstract fun dishDao(): DishDao;
+    abstract fun shoppingCartDao(): ShoppingCartDao;
+    abstract fun assessmentDao(): AssessmentDao;
 
 companion object {
     var  db: ElPucheritoDB? = null;
