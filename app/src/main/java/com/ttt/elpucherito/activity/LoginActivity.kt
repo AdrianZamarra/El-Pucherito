@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.activity.restaurantActiviy.RestaurantActivity
 import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantsActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
 
@@ -26,6 +25,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
+
         login_tv_login = findViewById(R.id.login_tv_login)
         login_et_email = findViewById(R.id.login_et_email)
         login_et_password = findViewById(R.id.login_et_password)
@@ -34,7 +35,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         login_btn_singin = findViewById(R.id.login_btn_singin)
 
-        // Implemento setOnClickListener
         login_btn_enter!!.setOnClickListener(this)
     }
 
