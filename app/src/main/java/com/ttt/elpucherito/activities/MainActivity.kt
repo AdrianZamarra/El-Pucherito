@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
+import com.ttt.elpucherito.activities.shoppingcart.ShoppingCartActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.User
