@@ -10,7 +10,6 @@ import android.widget.TextView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entity.User
-import kotlinx.android.synthetic.main.activity_sign.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,15 +17,15 @@ import kotlin.coroutines.CoroutineContext
 
 class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
 
-    private var sign_tv_signin : TextView ? = null
-    private var sign_et_email : EditText ? = null
-    private var sign_et_address : EditText ? = null
-    private var sign_et_password : EditText ? = null
-    private var sign_btn_enter : Button ? = null
+    private var signTvSignin : TextView ? = null
+    private var signEtEmail : EditText ? = null
+    private var signEtAddress : EditText ? = null
+    private var signEtPassword : EditText ? = null
+    private var signBtnEnter : Button ? = null
 
-    private var sign_et_name : EditText ? = null
-    private var sign_et_surname : EditText ? = null
-    private var sign_et_phone : EditText ? = null
+    private var signEtName : EditText ? = null
+    private var signEtSurname : EditText ? = null
+    private var signEtPhone : EditText ? = null
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
@@ -35,18 +34,18 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign)
 
-        sign_tv_signin = findViewById<TextView>(R.id.sign_tv_signin)
-        sign_btn_enter = findViewById<Button>(R.id.sign_btn_enter)
+        signTvSignin = findViewById(R.id.sign_tv_signin)
+        signBtnEnter = findViewById(R.id.sign_btn_enter)
 
-        sign_et_name = findViewById<EditText>(R.id.sign_et_name)
-        sign_et_surname = findViewById<EditText>(R.id.sign_et_surname)
-        sign_et_address = findViewById<EditText>(R.id.sign_et_address)
-        sign_et_email = findViewById<EditText>(R.id.sign_et_email)
-        sign_et_password = findViewById<EditText>(R.id.sign_et_password)
-        sign_et_phone = findViewById<EditText>(R.id.sign_et_phonenumber)
+        signEtName = findViewById(R.id.sign_et_name)
+        signEtSurname = findViewById(R.id.sign_et_surname)
+        signEtAddress = findViewById(R.id.sign_et_address)
+        signEtEmail = findViewById(R.id.sign_et_email)
+        signEtPassword = findViewById(R.id.sign_et_password)
+        signEtPhone = findViewById(R.id.sign_et_phonenumber)
 
         // Implemento setOnClickListener
-        sign_btn_enter!!.setOnClickListener(this)
+        signBtnEnter!!.setOnClickListener(this)
 
     }
 
@@ -56,14 +55,14 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
     */
     fun collectData() {
 
-        val name = sign_et_name?.text.toString()
-        val surname = sign_et_surname?.text.toString()
-        val address = sign_et_address?.text.toString()
-        val phone = sign_et_phone?.text.toString().toInt()
-        val email = sign_et_email?.text.toString()
-        val pass = sign_et_password?.text.toString()
+        val name = signEtName?.text.toString()
+        val surname = signEtSurname?.text.toString()
+        val address = signEtAddress?.text.toString()
+        val phone = signEtPhone?.text.toString().toInt()
+        val email = signEtEmail?.text.toString()
+        val pass = signEtPassword?.text.toString()
 
-        var user: User = User(null, name, surname, address, phone, email, pass,0)
+        var user = User(null, name, surname, address, phone, email, pass,0)
 
         println(user.name)
         Thread {
@@ -73,10 +72,8 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
             launch {
 
                 db.userDao().insertUser(user)
-
             }
         }.start()
-
     }
     override fun onClick(p0: View?) {
         collectData()

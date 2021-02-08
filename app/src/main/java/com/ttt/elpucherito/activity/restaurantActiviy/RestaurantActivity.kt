@@ -53,8 +53,12 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
                     println("Se ha cambiado!!")
                     var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
                     var userMail = db.userDao().getLoggedUser().email
+                    val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userMail, restaurant.resturant_id!!)
                     launch {
-                        try {
+                        if (assesment != null){
+                            assesment.rating = p1
+                            db.assessmentDao().updateAssessment(assesment)
+                        }else{
                             db.assessmentDao().insertAssessments(
                                 Assessment(
                                     null,
@@ -63,11 +67,6 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
                                     restaurant.resturant_id!!
                                 )
                             )
-                            db.assessmentDao().getAssessments().forEach{
-                                println(it.rating)
-                            }
-                        } catch (e: Exception) {
-                            Log.e("UNIQUE", "Este usuario ya ha dado su puntuacion")
                         }
                     }
                 }.start()
