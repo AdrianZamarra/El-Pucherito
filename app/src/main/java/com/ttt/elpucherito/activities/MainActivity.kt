@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         Thread {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-            db.printAllEntities(this)
+
             var user: User = db.userDao().getLoggedUser()
 
             if (user != null) {
@@ -38,42 +38,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-/*
-    fun addDishToShoppingCart(context:Context,dish:Dish){
-
-        Thread {
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-            var user: User = db.userDao().getLoggedUser()
-            val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
-        launch{
-
-            if (shoppingCart == null) {
-                db.shoppingCartDao().insertShoppingCarts(ShoppingCart(null,null,1,user.user_id!!))
-
-            } else {
-
-                db.dishesShoppingCartsDao().insertDishesShoppingCarts(DishesShoppingCarts(dish.dish_id!!,shoppingCart.shopping_cart_id!!))
-
-            }
-        }
-        }.start()
-
-    }
-    fun finishPurchase(context:Context){
-
-        Thread {
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-            var user: User = db.userDao().getLoggedUser()
-            var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
-            shoppingCart.status = 0;
-            db.shoppingCartDao().updateShoppingCart(shoppingCart)
-            //_INTENT AQUI ABAJO
-
-        }.start()
-
-    }
-    //Para consultar los platos de un carrito
-    // db.dishesShoppingCartsDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
-/*
