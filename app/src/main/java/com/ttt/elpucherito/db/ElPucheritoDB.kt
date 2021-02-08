@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 @TypeConverters(Converters::class)
-@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishesShoppingCarts::class], version = 2)
+@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishesShoppingCarts::class], version = 3)
 abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
 
     abstract fun userDao(): UserDao;
@@ -36,8 +36,12 @@ companion object {
                     ElPucheritoDB::class.java,
                     "el_pucherito_db"
                 ).build();
-                db!!.fillRestaurantsFromJsonPath(context.getApplicationContext(),"restaurants.json")
-                db!!.fillDishesFromJsonPath(context.getApplicationContext(),"dishes.json")
+                val restaurants:List<Restaurant> = db!!.restaurantDao().getRestaurants()
+                if(restaurants.isEmpty()){
+                    db!!.fillRestaurantsFromJsonPath(context.getApplicationContext(),"restaurants.json")
+                    db!!.fillDishesFromJsonPath(context.getApplicationContext(),"dishes.json")
+                }
+
 
             }
             return db as ElPucheritoDB;
