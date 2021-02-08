@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <activity android:name=".activity.ModifyuserActivity"></activity>
+        <activity android:name=".activity.UserProfile"></activity>
         <activity android:name=".activity.restaurantsActivity.RestaurantsActivity" />
         <activity android:name=".activity.restaurantActiviy.RestaurantActivity" />
         <activity android:name=".activity.SignActivity" />

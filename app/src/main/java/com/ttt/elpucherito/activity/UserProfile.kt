@@ -12,14 +12,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.ttt.elpucherito.R
 import kotlinx.android.synthetic.main.activity_modifyuser.*
 
-class ModifyuserActivity : AppCompatActivity(), View.OnClickListener {
+class UserProfile : AppCompatActivity(), View.OnClickListener {
 
     var drawerLayout : DrawerLayout? = null
     var imageMenu : ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_modifyuser)
+        setContentView(R.layout.activity_userprofile)
 
         drawerLayout = findViewById(R.id.drawerLayout)
         imageMenu = findViewById(R.id.imageMenu)
