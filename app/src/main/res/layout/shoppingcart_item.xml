@@ -27,12 +27,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/shoppingcart_btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3sp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_login"
+                android:background="@drawable/btn_quantity"
                 android:minWidth="5dp"
                 android:minHeight="10dp"
                 android:text="+" />
@@ -47,11 +47,11 @@
                 android:text="Quantity" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/shoppingcart_btn_substract"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/btn_login"
+                android:background="@drawable/btn_quantity"
                 android:minWidth="5dp"
                 android:minHeight="10dp"
                 android:text="-" />

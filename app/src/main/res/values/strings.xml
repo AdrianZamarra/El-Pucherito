@@ -33,6 +33,11 @@
     <string name="password">Contraseña</string>
     <string name="address">Direccion</string>
 
+    <!-- Modify user -->
+
+    <string name="modifyUser">Modificar usuario</string>
+    <string name="edit">Editar</string>
+
     <!-- TOAST MESSAGE -->
 
     <string name="invalidUser">Usuario o contraseña erroneo</string>

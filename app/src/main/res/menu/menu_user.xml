@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menuName"
+        android:title="@string/name"/>
+
+    <item android:id="@+id/menuSurname"
+        android:title="@string/surname"/>
+
+    <item android:id="@+id/menuPhone"
+        android:icon="@android:drawable/stat_sys_phone_call"
+        android:iconTint="@color/Grey"
+        android:title="@string/phone"/>
+
+    <item android:id="@+id/menuEmail"
+        android:icon="@android:drawable/sym_action_email"
+        android:iconTint="@color/Grey"
+        android:title="@string/email"/>
+
+    <item android:id="@+id/menuAddress"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:iconTint="@color/Grey"
+        android:title="@string/address"/>
+
+    <item android:id="@+id/menuPassword"
+        android:icon="@android:drawable/ic_menu_view"
+        android:iconTint="@color/Grey"
+        android:title="@string/password"/>
+
+
+
+</menu>
