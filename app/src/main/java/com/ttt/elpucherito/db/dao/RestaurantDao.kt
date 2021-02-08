@@ -28,4 +28,5 @@ interface RestaurantDao {
 
     @Query("DELETE FROM restaurants")
     suspend fun deleteAll()
+
 }

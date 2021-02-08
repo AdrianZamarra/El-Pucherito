@@ -35,7 +35,8 @@
                         android:layout_height="match_parent"
                         android:contentDescription="Imagen bar el abuelo"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/elabuelo" />
+                        android:src="@drawable/elabuelo"
+                        app:srcCompat="@drawable/abc_vector_test" />
 
                     <TextView
                         android:layout_width="match_parent"

@@ -35,11 +35,11 @@ class RestaurantsActivity : AppCompatActivity() {
         var restaurantsList : List<Restaurant>
         val restaurantItems : ArrayList<RestaurantItem> = ArrayList()
 
-        var thread = Thread {
+        Thread {
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
             restaurantsList = db.restaurantDao().getRestaurants()
             restaurantsList.forEach {
-                restaurantItems.add(RestaurantItem(it.restaurant_id, it.image, it.name, it.address, it.category, 3f))
+                restaurantItems.add(RestaurantItem(it.restaurant_id, it.image, it.name, it.address, it.category))
             }
         }.start()
         return restaurantItems

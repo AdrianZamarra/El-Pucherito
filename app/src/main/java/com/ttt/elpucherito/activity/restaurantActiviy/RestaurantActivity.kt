@@ -1,6 +1,8 @@
 package com.ttt.elpucherito.activity.restaurantActiviy
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
@@ -10,11 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantItem
 import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.db.entity.Assessment
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class RestaurantActivity : AppCompatActivity() {
+class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
-
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +32,46 @@ class RestaurantActivity : AppCompatActivity() {
         val restaurantTvName : TextView  = findViewById(R.id.restaurant_tv_name)
         val restaurantAssesment : RatingBar = findViewById(R.id.restaurant_ratingbar)
 
-        val restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
+        var restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
+
+        Thread{
+            val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
+            val userEmail = db.userDao().getLoggedUser().email
+            val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userEmail, restaurant.resturant_id!!)
+            if (assesment != null){
+                restaurantAssesment.rating = assesment.rating
+            }else{
+                restaurantAssesment.rating = 0f
+            }
+        }.start()
+
+        var context : Context = this
+
+        restaurantAssesment.setOnRatingBarChangeListener( object : RatingBar.OnRatingBarChangeListener {
+            override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
+                Thread {
+                    println("Se ha cambiado!!")
+                    var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
+                    var userMail = db.userDao().getLoggedUser().email
+                    val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userMail, restaurant.resturant_id!!)
+                    launch {
+                        if (assesment != null){
+                            assesment.rating = p1
+                            db.assessmentDao().updateAssessment(assesment)
+                        }else{
+                            db.assessmentDao().insertAssessments(
+                                Assessment(
+                                    null,
+                                    userMail,
+                                    p1,
+                                    restaurant.resturant_id!!
+                                )
+                            )
+                        }
+                    }
+                }.start()
+            }
+        })
 
         restaurantTvName.text = restaurant.name
 
@@ -38,22 +85,6 @@ class RestaurantActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
     }
-
-    private fun getRatingOfUser() : Int {
-
-        var rating : Int = 0
-
-        Thread{
-            var db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-            var restaurants = db.restaurantDao().getRestaurants()
-            var users = db.userDao().getUsers()
-            
-        }.start()
-
-        return rating
-    }
-
 
     private fun getDishesFromRestaurant() : ArrayList<DishItem> {
 

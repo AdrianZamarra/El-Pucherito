@@ -19,27 +19,21 @@ class MainActivity : AppCompatActivity(){
 
 
 
-        var intent : Intent = Intent(this,LoginActivity::class.java)
-        startActivity(intent)
-
-        Thread{
-
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-            var user: User = db.userDao().getLoggedUser()
-
-            if (user != null) {
-                var intent = Intent(this, RestaurantActivity::class.java)
-
-            }else{
-                var intent = Intent(this, LoginActivity::class.java)
-
-            }
-            startActivity(intent)
-        }.start()
 
 
+            Thread {
+                var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
+                var user: User = db.userDao().getLoggedUser()
 
-    }
+                if (user != null) {
+                    var intent = Intent(this, RestaurantsActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    var intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+            }.start()
+        }
+
 }
