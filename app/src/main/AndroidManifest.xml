@@ -10,12 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
+<<<<<<< HEAD
         <activity android:name=".activities.UserProfile"></activity>
         <activity android:name=".activities.restaurantsActivity.RestaurantsActivity" />
         <activity android:name=".activities.restaurantActiviy.RestaurantActivity" />
         <activity android:name=".activities.SignActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.MainActivity">
+=======
+        <activity android:name=".activity.UserProfileActivity"></activity>
+        <activity android:name=".activity.restaurantsActivity.RestaurantsActivity" />
+        <activity android:name=".activity.restaurantActiviy.RestaurantActivity" />
+        <activity android:name=".activity.SignActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MainActivity">
+>>>>>>> main
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
