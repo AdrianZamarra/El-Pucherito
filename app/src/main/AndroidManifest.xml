@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        <activity android:name=".activity.UserProfileActivity"></activity>
+        <activity android:name=".activity.UserProfileActivity" />
         <activity android:name=".activity.restaurantsActivity.RestaurantsActivity" />
         <activity android:name=".activity.restaurantActiviy.RestaurantActivity" />
         <activity android:name=".activity.SignActivity" />
