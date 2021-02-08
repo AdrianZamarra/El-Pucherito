@@ -17,18 +17,23 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Thread{
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
-            var user: User = db.userDao().getLoggedUser()
 
-            if (user != null) {
-                var intent = Intent(this, RestaurantsActivity::class.java)
-                startActivity(intent)
-            }else{
-                var intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-            }
-        }.start()
-    }
+
+
+            Thread {
+                var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+
+                var user: User = db.userDao().getLoggedUser()
+
+                if (user != null) {
+                    var intent = Intent(this, RestaurantsActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    var intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+            }.start()
+        }
+
 }

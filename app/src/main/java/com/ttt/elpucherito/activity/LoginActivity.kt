@@ -12,26 +12,37 @@ import com.ttt.elpucherito.db.ElPucheritoDB
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
+
+    private var login_tv_login : TextView ? = null
+    private var login_et_email : EditText ? = null
+    private var login_et_password : EditText ? = null
+
+    private var login_btn_enter : Button ? = null
+    private var login_btn_singin : Button ? = null
+
     private var loginTvLogin : TextView ? = null
     private var loginEtEmail : EditText ? = null
     private var loginEtPassword : EditText ? = null
-    private var loginCbStayin : CheckBox ? = null
     private var loginBtnEnter : Button ? = null
     private var loginBtnSingin : Button ? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
+        login_tv_login = findViewById(R.id.login_tv_login)
+        login_et_email = findViewById(R.id.login_et_email)
+        login_et_password = findViewById(R.id.login_et_password)
+        login_btn_enter = findViewById(R.id.login_btn_enter)
+        login_btn_singin = findViewById(R.id.login_btn_singin)
+        login_btn_enter!!.setOnClickListener(this)
 
         loginTvLogin = findViewById(R.id.login_tv_login)
         loginEtEmail = findViewById(R.id.login_et_email)
         loginEtPassword = findViewById(R.id.login_et_password)
-        loginCbStayin = findViewById(R.id.login_cb_stayin)
         loginBtnEnter = findViewById(R.id.login_btn_enter)
-
         loginBtnSingin = findViewById(R.id.login_btn_singin)
 
         loginBtnEnter!!.setOnClickListener(this)

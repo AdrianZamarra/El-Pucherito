@@ -19,6 +19,11 @@
     <string name="password">Password</string>
     <string name="address">Address</string>
 
+    <!-- Modify user -->
+
+    <string name="modifyUser">Modify user</string>
+    <string name="edit">Edit</string>
+
     <!-- TOAST MESSAGE -->
 
     <string name="invalidUser">Invalid user or password</string>

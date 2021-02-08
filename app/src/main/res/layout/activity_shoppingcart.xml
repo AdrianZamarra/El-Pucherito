@@ -5,18 +5,28 @@
     android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="600dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/shoppingcart_rv_dish"
+            android:layout_width="match_parent"
+            android:layout_height="576dp" />
+
+    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
-            android:minHeight="80dp"
             android:orientation="horizontal">
 
             <TextView
@@ -26,7 +36,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:minHeight="70dp"
-                android:text="Total" />
+                android:text="Total"
+                android:textColor="@color/design_default_color_on_secondary" />
 
             <TextView
                 android:id="@+id/tv_precio"
@@ -35,7 +46,26 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:minHeight="70dp"
-                android:text="Valor" />
+                android:text="Valor"
+                android:textColor="@color/design_default_color_on_secondary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
+                android:layout_marginRight="130dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_order"
+                android:text="PEDIR"
+                android:textColor="@color/Grey" />
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>
