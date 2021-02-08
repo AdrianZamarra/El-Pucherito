@@ -1,9 +1,11 @@
 package com.ttt.elpucherito.activities.users
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
@@ -26,6 +28,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private var loginEtPassword : EditText ? = null
     private var loginBtnEnter : Button ? = null
     private var loginBtnSingin : Button ? = null
+
 
 
 
@@ -67,9 +70,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val email = loginEtEmail?.text.toString()
         val pass = loginEtPassword?.text.toString()
 
+
         Thread {
 
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+
 
             val user = db.userDao().getValidateUser(email, pass)
             if (user != null) {
@@ -82,8 +87,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
             } else {
-                //Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-                println("me cago en dios")
+
+                
 
 
             }
@@ -93,6 +98,5 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         loginEtPassword?.setText("")
     }
 
+
 }
-
-

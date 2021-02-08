@@ -17,10 +17,6 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
-
             Thread {
                 var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
                 db.printAllEntities(this)
