@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(){
 
             Thread {
                 var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
+                db.printAllEntities(this)
                 var user: User = db.userDao().getLoggedUser()
 
                 if (user != null) {

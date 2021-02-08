@@ -32,17 +32,18 @@ class RestaurantsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-        val btnLogOut : Button = findViewById(R.id.btn_logout)
 
         val drawerLayout : DrawerLayout? = findViewById(R.id.drawerLayout)
         val imageMenu : ImageView?= findViewById(R.id.imageMenu)
 
         imageMenu!!.setOnClickListener(View.OnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  })
 
+        val btnLogOut : Button = findViewById(R.id.btn_logout)
+        btnLogOut.setOnClickListener(View.OnClickListener {logOut(this)})
     }
 
     /**
-     * Get Every restaurant of the database and adds it to an arraylist
+     * Get Everys restaurant of the database and adds it to an arraylist
      */
     private fun getRestaurants() : ArrayList<RestaurantItem>{
 
