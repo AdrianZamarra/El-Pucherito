@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity.restaurantsActivity
+package com.ttt.elpucherito.activities.restaurantsActivity
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.activity.restaurantActiviy.RestaurantActivity
+import com.ttt.elpucherito.activities.restaurantActiviy.RestaurantActivity
 
 class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, private val context: Context) : RecyclerView.Adapter<RestaurantAdapter.ChartViewHolder>() {
 

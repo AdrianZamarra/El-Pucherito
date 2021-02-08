@@ -7,7 +7,7 @@
 android:background="@color/Garnet"
     android:orientation="vertical"
     android:scrollbarSize="14dp"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activities.LoginActivity">
 
 
     <LinearLayout

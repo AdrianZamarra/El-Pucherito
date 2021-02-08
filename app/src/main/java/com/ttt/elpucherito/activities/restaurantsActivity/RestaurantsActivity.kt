@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity.restaurantsActivity
+package com.ttt.elpucherito.activities.restaurantsActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,10 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entity.Restaurant
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 class RestaurantsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

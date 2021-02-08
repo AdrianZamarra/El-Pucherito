@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity
+package com.ttt.elpucherito.activities.users
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -78,7 +78,8 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
     override fun onClick(p0: View?) {
         collectData()
 
-        val logScreen = Intent(this,LoginActivity::class.java)
+        val logScreen = Intent(this,
+            LoginActivity::class.java)
         startActivity(logScreen)
     }
 

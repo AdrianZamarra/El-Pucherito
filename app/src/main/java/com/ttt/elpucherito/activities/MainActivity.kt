@@ -1,12 +1,12 @@
-package com.ttt.elpucherito.activity
+package com.ttt.elpucherito.activities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.activity.restaurantActiviy.RestaurantActivity
 
-import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantsActivity
+import com.ttt.elpucherito.activities.restaurantsActivity.RestaurantsActivity
+import com.ttt.elpucherito.activities.users.LoginActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entity.User
 
