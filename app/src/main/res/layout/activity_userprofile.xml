@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".activity.ModifyuserActivity"
+    tools:context=".activity.UserProfileActivity"
     android:id="@+id/drawerLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,8 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="@string/app_name"
+                android:fontFamily="@font/seagram_tfb"
                 android:textColor="@color/Grey"
-                android:textSize="18dp"
+                android:textSize="23dp"
                 android:textStyle="bold"
                 />
 
