@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 @TypeConverters(Converters::class)
-@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishesShoppingCarts::class], version = 3)
+@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishesShoppingCarts::class], version = 4)
 abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
 
     abstract fun userDao(): UserDao;
@@ -25,6 +25,7 @@ abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
     abstract fun dishDao(): DishDao;
     abstract fun shoppingCartDao(): ShoppingCartDao;
     abstract fun assessmentDao(): AssessmentDao;
+    abstract fun dishesShoppingCartsDao():DishesShoppingCartsDao
 
 companion object {
     var  db: ElPucheritoDB? = null;
@@ -45,10 +46,6 @@ companion object {
 
             }
             return db as ElPucheritoDB;
-    }
-
-    private fun fillRestaurantsFromJsonPath(applicationContext: Context?, s: String) {
-
     }
 
 
