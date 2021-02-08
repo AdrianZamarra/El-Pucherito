@@ -44,4 +44,8 @@ class RestaurantsActivity : AppCompatActivity() {
         }.start()
         return restaurantItems
     }
+
+    override fun onBackPressed() {
+    }
+
 }
