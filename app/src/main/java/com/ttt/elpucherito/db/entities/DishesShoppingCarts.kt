@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.db.entity
+package com.ttt.elpucherito.db.entities
 
 import androidx.room.Entity
 

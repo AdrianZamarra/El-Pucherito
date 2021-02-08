@@ -1,9 +1,8 @@
-package com.ttt.elpucherito.db.dao
+package com.ttt.elpucherito.db.daos
 
 
 import androidx.room.*
-import com.ttt.elpucherito.db.entity.Assessment
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.Assessment
 
 @Dao
 interface AssessmentDao {

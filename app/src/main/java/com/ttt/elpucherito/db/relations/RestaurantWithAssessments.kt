@@ -2,8 +2,8 @@ package com.ttt.elpucherito.db.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.ttt.elpucherito.db.entity.Assessment
-import com.ttt.elpucherito.db.entity.Restaurant
+import com.ttt.elpucherito.db.entities.Assessment
+import com.ttt.elpucherito.db.entities.Restaurant
 
 data class RestaurantWithAssessments(
     @Embedded val restaurant: Restaurant?,

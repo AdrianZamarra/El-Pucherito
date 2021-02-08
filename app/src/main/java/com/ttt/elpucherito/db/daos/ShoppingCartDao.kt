@@ -1,12 +1,11 @@
-package com.ttt.elpucherito.db.dao
+package com.ttt.elpucherito.db.daos
 
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.ttt.elpucherito.db.entity.ShoppingCart
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.ShoppingCart
 import com.ttt.elpucherito.db.relations.ShoppingCartWithDishes
 
 @Dao

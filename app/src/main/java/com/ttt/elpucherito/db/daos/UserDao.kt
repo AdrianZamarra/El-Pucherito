@@ -1,7 +1,7 @@
-package com.ttt.elpucherito.db.dao
+package com.ttt.elpucherito.db.daos
 
 import androidx.room.*
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.User
 
 @Dao
 interface UserDao {

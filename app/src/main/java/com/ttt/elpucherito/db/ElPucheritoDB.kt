@@ -1,21 +1,19 @@
 package com.ttt.elpucherito.db
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.ttt.elpucherito.db.dao.*
-import com.ttt.elpucherito.db.entity.*
+import com.ttt.elpucherito.db.daos.*
+import com.ttt.elpucherito.db.entities.*
 import com.ttt.elpucherito.util.Converters
 import com.ttt.elpucherito.util.getJsonDataFromAsset
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import kotlin.coroutines.CoroutineContext
 
 @TypeConverters(Converters::class)
