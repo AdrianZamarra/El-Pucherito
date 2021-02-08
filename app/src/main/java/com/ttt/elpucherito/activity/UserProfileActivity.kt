@@ -12,7 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.ttt.elpucherito.R
 import kotlinx.android.synthetic.main.activity_modifyuser.*
 
-class UserProfile : AppCompatActivity(), View.OnClickListener {
+class UserProfileActivity : AppCompatActivity(), View.OnClickListener {
 
     var drawerLayout : DrawerLayout? = null
     var imageMenu : ImageView? = null

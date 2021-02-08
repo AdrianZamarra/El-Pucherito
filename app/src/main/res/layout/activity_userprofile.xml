@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".activity.UserProfile"
+    tools:context=".activity.UserProfileActivity"
     android:id="@+id/drawerLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
