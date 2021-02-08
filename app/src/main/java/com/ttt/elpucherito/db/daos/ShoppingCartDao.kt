@@ -12,11 +12,12 @@ interface ShoppingCartDao {
     @Query("SELECT * FROM shopping_carts ORDER BY shopping_cart_id ASC")
     fun getShoppingCarts(): List<ShoppingCart>
 
-    @Query("SELECT * FROM shopping_carts WHERE status = 1 and user_id=:userID ")
-    fun getActiveShoppingCartFromUserID(userID:Int): ShoppingCart
-
+    @Transaction
     @Query("SELECT * FROM shopping_carts")
     fun getShoppingCartWithDishes(): List<ShoppingCartWithDishes>
+
+    @Query("SELECT * FROM shopping_carts WHERE status = 1 and user_id=:userID ")
+    fun getActiveShoppingCartFromUserID(userID:Int): ShoppingCart
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertShoppingCart(shopping_cart: ShoppingCart)
