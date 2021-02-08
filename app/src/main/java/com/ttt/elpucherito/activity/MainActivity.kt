@@ -16,24 +16,19 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Thread{
 
+        Thread{
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
             var user: User = db.userDao().getLoggedUser()
 
             if (user != null) {
-                var intent = Intent(this, RestaurantActivity::class.java)
-
+                var intent = Intent(this, RestaurantsActivity::class.java)
+                startActivity(intent)
             }else{
                 var intent = Intent(this, LoginActivity::class.java)
-
+                startActivity(intent)
             }
-            startActivity(intent)
         }.start()
-
-
-
-
     }
 }
