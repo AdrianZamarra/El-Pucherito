@@ -13,6 +13,7 @@ import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantItem
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entity.Assessment
+import com.ttt.elpucherito.db.entity.Dish
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -78,7 +79,9 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         val id = this.resources.getIdentifier(restaurant.image, "drawable", this.packageName)
         restaurantAvatar.setImageResource(id)
 
-        val dishes : ArrayList<DishItem> = ArrayList()
+        val dishes : ArrayList<DishItem>
+
+        dishes = getDishesFromRestaurant(restaurant)
 
         val recyclerView : RecyclerView = findViewById(R.id.restaurant_chart_dishes)
         recyclerView.adapter = ChartAdapter(dishes,this)
@@ -86,16 +89,22 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         recyclerView.setHasFixedSize(true)
     }
 
-    private fun getDishesFromRestaurant() : ArrayList<DishItem> {
+    private fun getDishesFromRestaurant(restaurant : RestaurantItem) : ArrayList<DishItem> {
+        var dishList : List<RestaurantWithDishes>
+        var dishItems : ArrayList<DishItem> = ArrayList()
+        Thread {
+            val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
+            dishList = db.restaurantDao().getDishes()
 
-        val dishList : List<RestaurantWithDishes>
-        val dishItems : ArrayList<DishItem> = ArrayList()
-
-        val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-        dishList = db.restaurantDao().getDishes()
+            dishList.forEach{
+                if (it.restaurant?.name  == restaurant.name){
+                    it.dishes.forEach{
+                        dishItems.add(DishItem(it.name, it.description, it.price.toString() + "€"))
+                    }
+                }
+            }
+        }.start()
 
         return dishItems
-
     }
 }
