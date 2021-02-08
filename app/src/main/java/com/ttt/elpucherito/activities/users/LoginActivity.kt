@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity
+package com.ttt.elpucherito.activities.users
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantsActivity
+import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
+
 import com.ttt.elpucherito.db.ElPucheritoDB
 
 
@@ -66,7 +67,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         val email = loginEtEmail?.text.toString()
         val pass = loginEtPassword?.text.toString()
 
-        val thread = Thread {
+        Thread {
 
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
@@ -87,10 +88,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             }
         }.start()
-
+        Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
     }
 
 }
+
 

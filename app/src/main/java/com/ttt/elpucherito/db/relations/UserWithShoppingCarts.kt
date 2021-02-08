@@ -3,8 +3,8 @@ package com.ttt.elpucherito.db.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.ttt.elpucherito.db.entity.ShoppingCart
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.ShoppingCart
+import com.ttt.elpucherito.db.entities.User
 
 
 data class UserWithShoppingCarts(

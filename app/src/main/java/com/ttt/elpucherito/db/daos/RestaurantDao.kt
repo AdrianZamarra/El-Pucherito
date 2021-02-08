@@ -1,8 +1,7 @@
-package com.ttt.elpucherito.db.dao
+package com.ttt.elpucherito.db.daos
 
 import androidx.room.*
-import com.ttt.elpucherito.db.entity.Assessment
-import com.ttt.elpucherito.db.entity.Restaurant
+import com.ttt.elpucherito.db.entities.Restaurant
 import com.ttt.elpucherito.db.relations.RestaurantWithAssessments
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 

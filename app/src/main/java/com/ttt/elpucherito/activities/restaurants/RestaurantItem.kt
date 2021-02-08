@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activities.restaurantsActivity
+package com.ttt.elpucherito.activities.restaurants
 
 import java.io.Serializable
 

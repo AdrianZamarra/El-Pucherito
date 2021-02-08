@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 
-import com.ttt.elpucherito.activities.restaurantsActivity.RestaurantsActivity
+import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.User
 
 
 class MainActivity : AppCompatActivity(){

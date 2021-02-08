@@ -3,9 +3,9 @@ package com.ttt.elpucherito.db.relations
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import com.ttt.elpucherito.db.entity.Dish
-import com.ttt.elpucherito.db.entity.DishesShoppingCarts
-import com.ttt.elpucherito.db.entity.ShoppingCart
+import com.ttt.elpucherito.db.entities.Dish
+import com.ttt.elpucherito.db.entities.DishesShoppingCarts
+import com.ttt.elpucherito.db.entities.ShoppingCart
 
 data class DishWithShoppingCarts(
     @Embedded val dish: Dish,
