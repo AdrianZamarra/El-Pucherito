@@ -70,7 +70,6 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
             launch {
-
                 db.userDao().insertUser(user)
             }
         }.start()

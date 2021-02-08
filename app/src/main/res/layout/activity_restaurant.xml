@@ -34,6 +34,7 @@
             android:id="@+id/restaurant_ratingbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:progressTint="@color/Gold"
             android:layout_gravity="center|center_horizontal|center_vertical" />
 
     </LinearLayout>

@@ -33,6 +33,7 @@
             android:id="@+id/restaurants_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:progressTint="@color/Gold"
             android:isIndicator="true"/>
     </LinearLayout>
 
