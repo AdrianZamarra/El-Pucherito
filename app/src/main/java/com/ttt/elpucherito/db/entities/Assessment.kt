@@ -1,11 +1,6 @@
-package com.ttt.elpucherito.db.entity
+package com.ttt.elpucherito.db.entities
 
-import android.content.Context
-import android.util.Log
 import androidx.room.*
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.ttt.elpucherito.util.getJsonDataFromAsset
 
 @Entity(tableName = "assessments")
 data class Assessment(

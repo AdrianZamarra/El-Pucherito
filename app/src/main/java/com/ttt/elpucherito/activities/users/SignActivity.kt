@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activity
+package com.ttt.elpucherito.activities.users
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.User
+import com.ttt.elpucherito.db.entities.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -77,7 +77,8 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
     override fun onClick(p0: View?) {
         collectData()
 
-        val logScreen = Intent(this,LoginActivity::class.java)
+        val logScreen = Intent(this,
+            LoginActivity::class.java)
         startActivity(logScreen)
     }
 

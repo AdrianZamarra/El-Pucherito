@@ -1,8 +1,7 @@
-package com.ttt.elpucherito.activity.restaurantActiviy
+package com.ttt.elpucherito.activities.restaurant
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
@@ -10,10 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.activity.restaurantsActivity.RestaurantItem
+import com.ttt.elpucherito.activities.restaurants.RestaurantItem
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entity.Assessment
-import com.ttt.elpucherito.db.entity.Dish
+import com.ttt.elpucherito.db.entities.Assessment
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

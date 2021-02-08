@@ -9,12 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activity.UserProfileActivity" />
-        <activity android:name=".activity.restaurantsActivity.RestaurantsActivity" />
-        <activity android:name=".activity.restaurantActiviy.RestaurantActivity" />
-        <activity android:name=".activity.SignActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activities.restaurants.RestaurantsActivity" />
+        <activity android:name=".activities.restaurant.RestaurantActivity" />
+        <activity android:name=".activities.users.SignActivity" />
+        <activity android:name=".activities.users.LoginActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
