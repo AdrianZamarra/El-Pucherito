@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private var login_tv_login : TextView ? = null
     private var login_et_email : EditText ? = null
     private var login_et_password : EditText ? = null
-    private var login_cb_stayin : CheckBox ? = null
+
     private var login_btn_enter : Button ? = null
     private var login_btn_singin : Button ? = null
 
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         login_tv_login = findViewById(R.id.login_tv_login)
         login_et_email = findViewById(R.id.login_et_email)
         login_et_password = findViewById(R.id.login_et_password)
-        login_cb_stayin = findViewById(R.id.login_cb_stayin)
+
         login_btn_enter = findViewById(R.id.login_btn_enter)
 
         login_btn_singin = findViewById(R.id.login_btn_singin)

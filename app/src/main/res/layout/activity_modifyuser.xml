@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".activity.ModifyuserActivity">
+    tools:context=".activity.ModifyuserActivity"
+    android:id="@+id/drawerLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -51,6 +52,8 @@
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+
+        app:menu="@menu/menu_user"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

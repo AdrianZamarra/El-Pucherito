@@ -16,6 +16,12 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+        var intent : Intent = Intent(this,LoginActivity::class.java)
+        startActivity(intent)
+
         Thread{
 
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
