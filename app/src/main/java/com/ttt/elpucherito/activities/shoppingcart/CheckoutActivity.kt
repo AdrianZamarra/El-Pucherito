@@ -1,13 +1,18 @@
 package com.ttt.elpucherito.activities.shoppingcart
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
+import com.ttt.elpucherito.db.ElPucheritoDB
+import kotlin.random.Random
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -15,17 +20,27 @@ class CheckoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
-        //val ivGif : ImageView = findViewById(R.id.checkout_iv_gif)
+
         val tvAddres : TextView = findViewById(R.id.checkout_tv_address)
+        val btnReturn : Button = findViewById(R.id.checkout_btn_return)
+        val tvArrive : TextView = findViewById(R.id.checkout_tv_succesfull)
 
-        tvAddres.setText("Calle nueva nº 13")
-        //showGif(ivGif, getDrawable(R.drawable.deliver)!!)
+        val random = (15..60).random()
 
+        tvArrive.append(random.toString() + "Mins")
+        btnReturn.setOnClickListener{
+            var intent = Intent(this, RestaurantsActivity::class.java)
+            startActivity(intent)
+        }
 
-    }
+        Thread {
+            var db = ElPucheritoDB.getInstance(this)
+            var user = db.userDao().getLoggedUser()
 
-    private fun showGif(image: ImageView, gif : Drawable) {
-        Glide.with(applicationContext).asGif().load(gif).into(image)
+            tvAddres.text = user.address
+
+        }.start()
+
 
     }
 }

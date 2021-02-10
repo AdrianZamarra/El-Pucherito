@@ -47,5 +47,8 @@
     <string name="cerrar_sesion">Cerrar sesion</string>
     <string name="gracias_por_su_compra">¡GRACIAS POR SU COMPRA!</string>
     <string name="la_entrega_ser_enviada_a_la_direcci_n">La entrega será enviada a la dirección:</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="namedish">nameDish</string>
+    <string name="dishprice">dishPrice</string>
 
 </resources>

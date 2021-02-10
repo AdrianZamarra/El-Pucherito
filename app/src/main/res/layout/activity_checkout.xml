@@ -67,9 +67,16 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25sp"
             android:background="@drawable/deliver" />
+
+        <Button
+            android:id="@+id/checkout_btn_return"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
     </LinearLayout>
 
 </LinearLayout>
