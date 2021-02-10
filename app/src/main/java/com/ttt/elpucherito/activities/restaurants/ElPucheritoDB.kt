@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.db
+package com.ttt.elpucherito.activities.restaurants
 
 import android.content.Context
 import androidx.room.Database
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 @TypeConverters(Converters::class)
-@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishesShoppingCarts::class], version = 4)
+@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishShoppingCartRef::class], version = 5)
 abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
 
     abstract fun userDao(): UserDao;
@@ -25,7 +25,7 @@ abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
     abstract fun dishDao(): DishDao;
     abstract fun shoppingCartDao(): ShoppingCartDao;
     abstract fun assessmentDao(): AssessmentDao;
-    abstract fun dishesShoppingCartsDao():DishesShoppingCartsDao
+    abstract fun dishShoppingCartDao():DishShoppingCartDao
 
 companion object {
     var  db: ElPucheritoDB? = null;
@@ -107,7 +107,10 @@ companion object {
     }
     fun printAllEntities(context: Context){
 
-        var db : ElPucheritoDB = ElPucheritoDB.getInstance(context)
+        var db : ElPucheritoDB =
+            getInstance(
+                context
+            )
 
         val thread = Thread {
             print("USERS")

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 
-import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.activities.restaurants.ElPucheritoDB
 
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -83,7 +83,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             } else {
                 //Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-                println("me cago en dios")
 
 
             }

@@ -1,6 +1,5 @@
 package com.ttt.elpucherito.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +7,8 @@ import com.ttt.elpucherito.R
 
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
-import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entities.Dish
+import com.ttt.elpucherito.activities.restaurants.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.DishesShoppingCarts
-import com.ttt.elpucherito.db.entities.ShoppingCart
 import com.ttt.elpucherito.db.entities.User
 
 
