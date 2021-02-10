@@ -35,11 +35,7 @@ class RestaurantsActivity : AppCompatActivity() {
         val imageMenu : ImageView?= findViewById(R.id.imageMenu)
 
         imageMenu!!.setOnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  }
-
-
-        var contex: Context = set
-
-
+        
         val btnLogOut : Button = findViewById(R.id.btn_logout)
         btnLogOut.setOnClickListener {logOut(this)}
         val btnShoppingCart : Button = findViewById(R.id.btn_carrito)
