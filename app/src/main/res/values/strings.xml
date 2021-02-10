@@ -50,5 +50,6 @@
     <string name="cantidad">Cantidad</string>
     <string name="namedish">nameDish</string>
     <string name="dishprice">dishPrice</string>
+    <string name="volver">Volver</string>
 
 </resources>
