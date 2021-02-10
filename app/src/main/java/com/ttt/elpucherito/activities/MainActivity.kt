@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user: User = db.userDao().getLoggedUser()
             if (user != null) {
-                var intent = Intent(this, CheckoutActivity::class.java)
+                val intent = Intent(this, CheckoutActivity::class.java)
                startActivity(intent)
             } else {
-                var intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
         }.start()

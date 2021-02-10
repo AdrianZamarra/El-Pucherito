@@ -8,7 +8,7 @@
     tools:context=".activities.shoppingcart.CheckoutActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/checkout_tv_thanks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
@@ -37,6 +37,39 @@
             android:gravity="center_vertical"
             android:text="La entrega estimada es de: "
             android:textSize="22dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/checkout_tv_address_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/la_entrega_ser_enviada_a_la_direcci_n"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/checkout_tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center_vertical"
+            android:text="Prueba"
+            android:textSize="20sp" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25sp"
+            android:background="@drawable/deliver" />
     </LinearLayout>
 
 </LinearLayout>
