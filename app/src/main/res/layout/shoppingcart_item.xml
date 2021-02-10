@@ -13,29 +13,29 @@
 
         <TextView
             android:id="@+id/shoppingcart_item_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:minHeight="70dp"
-            android:text="nameDish" />
+            android:text="@string/namedish" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/shoppingcart_btn_add"
+                android:id="@+id/shoppingcart_btn_substract"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3sp"
+                android:layout_marginStart="3sp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_quantity"
                 android:minWidth="5dp"
                 android:minHeight="10dp"
-                android:text="+" />
+                android:text="-" />
 
             <TextView
                 android:id="@+id/shoppingcart_item_quantity"
@@ -44,27 +44,27 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:minHeight="70dp"
-                android:text="Quantity" />
+                android:text="@string/cantidad" />
 
             <Button
-                android:id="@+id/shoppingcart_btn_substract"
+                android:id="@+id/shoppingcart_btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/btn_quantity"
                 android:minWidth="5dp"
                 android:minHeight="10dp"
-                android:text="-" />
+                android:text="+" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/shoppingcart_item_price"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:minHeight="70dp"
-            android:text="dishPrice" />
+            android:text="@string/dishprice" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
