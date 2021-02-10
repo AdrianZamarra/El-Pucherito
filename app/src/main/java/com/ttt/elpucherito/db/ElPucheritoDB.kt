@@ -25,7 +25,7 @@ abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
     abstract fun dishDao(): DishDao;
     abstract fun shoppingCartDao(): ShoppingCartDao;
     abstract fun assessmentDao(): AssessmentDao;
-    abstract fun dishesShoppingCartsDao():DishesShoppingCartsDao
+    //abstract fun dishesShoppingCartsDao():DishesShoppingCartsDao
 
 companion object {
     var  db: ElPucheritoDB? = null;

@@ -12,11 +12,10 @@ import com.ttt.elpucherito.db.relations.ShoppingCartWithDishes
 @Dao
 interface DishesShoppingCartsDao {
 
-    @Query("SELECT * FROM dishes_shopping_carts")
-    fun getShoppingCarts(): List<ShoppingCart>
+
 
     @Query("SELECT * FROM dishes_shopping_carts WHERE shopping_cart_id = :ShoppingCartID")
-    fun getDishesWithShoppingCartID(ShoppingCartID:Int): ShoppingCart
+    fun getDishesWithShoppingCartID(ShoppingCartID:Int): List<DishesShoppingCartsDao>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDishesShoppingCarts(dishesShoppingCarts: DishesShoppingCarts)

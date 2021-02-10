@@ -76,15 +76,22 @@
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:headerLayout="@layout/layout_navigation_header"
         android:layout_gravity="start"
         app:menu="@menu/menu_user">
+
 
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:layout_marginTop="300dp"
             android:layout_gravity="center"
-            android:text="Cerrar sesion" />
+            android:text="@string/signoff" />
+
+
+
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

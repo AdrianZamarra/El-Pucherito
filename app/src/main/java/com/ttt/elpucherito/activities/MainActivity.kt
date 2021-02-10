@@ -79,4 +79,4 @@ class MainActivity : AppCompatActivity() {
     }
     //Para consultar los platos de un carrito
     // db.dishesShoppingCartsDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
-/*
+*/
