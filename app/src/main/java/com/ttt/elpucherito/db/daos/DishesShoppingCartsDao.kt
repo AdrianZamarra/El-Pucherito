@@ -19,6 +19,4 @@ interface DishesShoppingCartsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDishesShoppingCarts(dishesShoppingCarts: DishesShoppingCarts)
 
-
-
 }

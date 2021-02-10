@@ -42,9 +42,6 @@ class RestaurantsActivity : AppCompatActivity() {
         btnLogOut.setOnClickListener {logOut(this)}
     }
 
-    /**
-     * Get Everys restaurant of the database and adds it to an arraylist
-     */
     private fun getRestaurants() : ArrayList<RestaurantItem>{
 
         var restaurantsList : List<Restaurant>

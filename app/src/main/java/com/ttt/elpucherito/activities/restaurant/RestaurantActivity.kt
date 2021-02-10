@@ -99,7 +99,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
             dishList.forEach{
                 if (it.restaurant?.name  == restaurant.name){
                     it.dishes.forEach{
-                        dishItems.add(DishItem(it.name, it.description, it.price.toString() + "€", it.restaurant_id))
+                        dishItems.add(DishItem(it.name, it.description, it.price.toString(), it.restaurant_id))
                     }
                 }
             }

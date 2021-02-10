@@ -46,18 +46,17 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
         fun bind(dishItem : DishItem, context: Context) {
             buy.setOnClickListener {
                 Toast.makeText(context, dishItem.title, Toast.LENGTH_SHORT).show()
-                //addDishToShoppingCart(context, Dish(null, dishItem.title, dishItem.description, dishItem.price.toFloat(), dishItem.restaurantId))
+                addDishToShoppingCart(context, Dish(null, dishItem.title, dishItem.description, dishItem.price.toFloat(), dishItem.restaurantId))
             }
         }
 
         override val coroutineContext: CoroutineContext
             get() = Dispatchers.Main
 
-        fun addDishToShoppingCart(context: Context, dish: Dish){
+        private fun addDishToShoppingCart(context: Context, dish: Dish){
 
             Thread {
                 var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
-
                 var user: User = db.userDao().getLoggedUser()
                 val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
                 launch{
@@ -65,7 +64,7 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
                     if (shoppingCart == null) {
                         println("creado un carrito nuevo")
                         db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
-
+                        db.dishesShoppingCartsDao().insertDishesShoppingCarts(DishesShoppingCarts(dish.dish_id!!,shoppingCart.shopping_cart_id!!))
                     } else {
                         println("Añadido un plato nuevo al carrito")
                         db.dishesShoppingCartsDao().insertDishesShoppingCarts(DishesShoppingCarts(dish.dish_id!!,shoppingCart.shopping_cart_id!!))
