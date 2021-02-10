@@ -33,15 +33,12 @@ class RestaurantsActivity : AppCompatActivity() {
         val drawerLayout : DrawerLayout? = findViewById(R.id.drawerLayout)
         val imageMenu : ImageView?= findViewById(R.id.imageMenu)
 
-        imageMenu!!.setOnClickListener(View.OnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  })
+        imageMenu!!.setOnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  }
 
         val btnLogOut : Button = findViewById(R.id.btn_logout)
-        btnLogOut.setOnClickListener(View.OnClickListener {logOut(this)})
+        btnLogOut.setOnClickListener {logOut(this)}
     }
 
-    /**
-     * Get Everys restaurant of the database and adds it to an arraylist
-     */
     private fun getRestaurants() : ArrayList<RestaurantItem>{
 
         var restaurantsList : List<Restaurant>
@@ -57,11 +54,7 @@ class RestaurantsActivity : AppCompatActivity() {
         return restaurantItems
     }
 
-    override fun onBackPressed() {
-
-    }
-
-    fun logOut(context: Context) {
+    private fun logOut(context: Context) {
         Thread {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
 
@@ -76,4 +69,7 @@ class RestaurantsActivity : AppCompatActivity() {
         }.start()
     }
 
+    override fun onBackPressed() {
+
+    }
 }

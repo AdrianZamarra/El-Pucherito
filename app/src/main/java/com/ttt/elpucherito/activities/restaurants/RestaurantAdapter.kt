@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurant.RestaurantActivity
+import com.ttt.elpucherito.db.ElPucheritoDB
+import java.lang.Exception
 
 class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, private val context: Context) : RecyclerView.Adapter<RestaurantAdapter.ChartViewHolder>() {
 
@@ -33,9 +35,34 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         holder.name.text = currentItem.name
         val id = context.resources.getIdentifier(currentItem.image, "drawable", context.packageName)
         holder.image.setImageResource(id)
-        // ARREGLAR
-        holder.assesment.rating = 3f
+        try {
+            println("hola")
+            holder.assesment.rating = getAvgAssessment(currentItem)
+        }catch (e : Exception){
+            println("error")
+            holder.assesment.rating = 0f
+        }
+
         holder.bind(currentItem, context)
+    }
+
+    @Throws(Exception::class)
+    private fun getAvgAssessment(restaurant : RestaurantItem) : Float{
+        var nAssesments = 0
+        var finalAssessment = 0f
+        Thread {
+                val db = ElPucheritoDB.getInstance(context).assessmentDao().getAssessments()
+                db.forEach {
+                    if (it.restaurant_id == restaurant.resturant_id){
+                        finalAssessment += it.rating
+                        nAssesments += 1
+                    }
+                }
+        }.start()
+        //TODO IMPORTANTE CAMBIAR
+        Thread.sleep(10)
+        println(finalAssessment)
+        return finalAssessment / nAssesments
     }
 
     class ChartViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
@@ -44,10 +71,8 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         val assesment : RatingBar = itemView.findViewById(R.id.restaurants_rating)
         fun bind(restaurant : RestaurantItem, context: Context) {
             image.setOnClickListener {
-
                 var intent = Intent(context, RestaurantActivity::class.java)
                 intent.putExtra("Restaurant", restaurant)
-
                 context.startActivity(intent)
                 Toast.makeText(context, restaurant.name, Toast.LENGTH_SHORT).show() }
         }

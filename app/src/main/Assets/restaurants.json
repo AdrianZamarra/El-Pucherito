@@ -8,7 +8,7 @@
   },
   {
     "restaurant_id": null,
-    "name": "géminis",
+    "name": "Géminis",
     "address": "Calle San Isidro, 5, 16400 Tarancón, Cuenca",
     "category": "Comida Rápida",
     "image": "geminis"
@@ -17,7 +17,7 @@
 
   {
     "restaurant_id": null,
-    "name": "Tio toria",
+    "name": "Tio Toria",
     "address": "Av. Miguel de Cervantes, 93, 16400 Tarancón, Cuenca",
     "category": "Familiar",
     "image": "tio_toria"
@@ -42,7 +42,7 @@
 
   {
     "restaurant_id": null,
-    "name": "far west",
+    "name": "Far West",
     "address": "Plaza del Ayuntamiento, 2, 16400 Tarancón, Cuenca",
     "category": "Familiar",
     "image": "far_west"

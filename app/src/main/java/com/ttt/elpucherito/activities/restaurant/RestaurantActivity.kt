@@ -1,6 +1,7 @@
 package com.ttt.elpucherito.activities.restaurant
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -9,8 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
-import com.ttt.elpucherito.activities.restaurants.RestaurantItem
 import com.ttt.elpucherito.activities.restaurants.ElPucheritoDB
+import com.ttt.elpucherito.activities.restaurants.RestaurantItem
+import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 import com.ttt.elpucherito.db.entities.Assessment
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 import kotlinx.coroutines.CoroutineScope
@@ -97,12 +99,17 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
             dishList.forEach{
                 if (it.restaurant?.name  == restaurant.name){
                     it.dishes.forEach{
-                        dishItems.add(DishItem(it.name, it.description, it.price.toString() + "€"))
+                        dishItems.add(DishItem(it.name, it.description, it.price.toString(), it.restaurant_id))
                     }
                 }
             }
         }.start()
 
         return dishItems
+    }
+
+    override fun onBackPressed() {
+        val restaurantsActivity = Intent(this, RestaurantsActivity::class.java)
+        startActivity(restaurantsActivity)
     }
 }
