@@ -97,7 +97,7 @@
         "restaurant_id":2
     },
     {
-        "name":"super perrito",
+        "name":"Super perrito",
         "description":"super perrito, salchicha, beicon, queso y cebolla frita",
         "price":6.00,
         
@@ -282,7 +282,7 @@
         "restaurant_id":5
     },
     {
-        "name":"nuggets pollo",
+        "name":"Nuggets pollo",
         "description":"nuggets de pollo",
         "price":3.50,
         "restaurant_id":5

@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 
@@ -14,10 +12,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.shoppingcart.ShoppingCartActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.Restaurant
-import kotlinx.android.synthetic.main.activity_restaurants.*
 
 class RestaurantsActivity : AppCompatActivity() {
 
@@ -40,11 +38,10 @@ class RestaurantsActivity : AppCompatActivity() {
 
         val btnLogOut : Button = findViewById(R.id.btn_logout)
         btnLogOut.setOnClickListener {logOut(this)}
+        val btnShoppingCart : Button = findViewById(R.id.btn_carrito)
+        btnShoppingCart.setOnClickListener {showShoppingCart(this)}
     }
 
-    /**
-     * Get Everys restaurant of the database and adds it to an arraylist
-     */
     private fun getRestaurants() : ArrayList<RestaurantItem>{
 
         var restaurantsList : List<Restaurant>
@@ -69,7 +66,7 @@ class RestaurantsActivity : AppCompatActivity() {
 
                 user.logged = 0
                 db.userDao().updateUser(user)
-                var intent = Intent(this, LoginActivity::class.java)
+                var intent = Intent(context, LoginActivity::class.java)
                 startActivity(intent)
             }
         }.start()
@@ -77,5 +74,9 @@ class RestaurantsActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
+    }
+    private fun showShoppingCart(context: Context){
+        var intent = Intent(context, ShoppingCartActivity::class.java)
+        startActivity(intent)
     }
 }

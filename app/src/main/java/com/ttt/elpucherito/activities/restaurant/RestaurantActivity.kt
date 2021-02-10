@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.activities.restaurants.RestaurantItem
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
-import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.Assessment
 import com.ttt.elpucherito.db.relations.RestaurantWithDishes
 import kotlinx.coroutines.CoroutineScope
@@ -99,7 +99,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
             dishList.forEach{
                 if (it.restaurant?.name  == restaurant.name){
                     it.dishes.forEach{
-                        dishItems.add(DishItem(it.name, it.description, it.price.toString() + "€"))
+                        dishItems.add(DishItem(it.dish_id!!,it.name, it.description, it.price.toString(), it.restaurant_id))
                     }
                 }
             }
