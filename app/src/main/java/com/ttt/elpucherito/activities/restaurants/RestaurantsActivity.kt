@@ -79,4 +79,9 @@ class RestaurantsActivity : AppCompatActivity() {
         var intent = Intent(context, ShoppingCartActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onPause() {
+        super.onPause()
+        this.finish()
+    }
 }

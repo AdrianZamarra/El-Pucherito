@@ -96,15 +96,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
                 startActivity(restaurantScreen)
 
 
-            } else {
-                //Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-
-
             }
         }.start()
         Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        this.finish()
     }
 
 }

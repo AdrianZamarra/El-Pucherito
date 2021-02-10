@@ -30,5 +30,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }.start()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        this.finish()
     }
 }

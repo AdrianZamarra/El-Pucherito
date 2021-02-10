@@ -51,5 +51,7 @@
     <string name="namedish">nameDish</string>
     <string name="dishprice">dishPrice</string>
     <string name="volver">Volver</string>
+    <string name="pedir">PEDIR</string>
+    <string name="total">Total</string>
 
 </resources>
