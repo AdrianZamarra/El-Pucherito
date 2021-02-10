@@ -69,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25sp"
+            android:layout_weight="1"
             android:background="@drawable/deliver" />
 
         <Button
@@ -76,7 +77,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="@drawable/btn_order"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="@string/volver" />
     </LinearLayout>
 
 </LinearLayout>

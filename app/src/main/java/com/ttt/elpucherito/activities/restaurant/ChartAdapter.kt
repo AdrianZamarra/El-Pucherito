@@ -48,21 +48,25 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
 
         fun bind(dishItem : DishItem, context: Context) {
             buy.setOnClickListener {
-                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-                builder.setCancelable(true)
-                builder.setTitle("Añadido producto")
-                builder.setMessage("Se ha añadido correctamente el producto al carrito.")
-                builder.setPositiveButton("Aceptar",
-                    DialogInterface.OnClickListener { dialog, which -> })
-                builder.setNegativeButton(
-                    "Ir al carrito",
-                    DialogInterface.OnClickListener { dialog, which ->
-                        var shoppingCartIntent = Intent(context, ShoppingCartActivity::class.java)
-                        context.startActivity(shoppingCartIntent)
-                    })
 
-                val dialog: AlertDialog = builder.create()
-                dialog.show()
+                val builder = AlertDialog.Builder(context)
+                with(builder){
+                    setCancelable(true)
+                    setTitle("Producto añadido")
+                    setMessage("Se ha añadido correctamente el producto al carrito.")
+                    setPositiveButton("Continuar comprando",
+                        DialogInterface.OnClickListener { dialog, which ->
+                        })
+                    setNegativeButton(
+                        "Ir al carrito",
+                        DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
+                                var shoppingCartIntent = Intent(context, ShoppingCartActivity::class.java)
+                                context.startActivity(shoppingCartIntent)
+                        }
+                    )
+                    setIcon(android.R.drawable.checkbox_on_background)
+                    show()
+                }
                 addDishToShoppingCart(context,dishItem.dish_id)
             }
         }

@@ -24,9 +24,12 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
     override fun onBindViewHolder(holder: ChartViewHolder, position: Int) {
         val currentItem = dishesList[position]
 
+        val quantity = currentItem.price.toFloat() * currentItem.quantity!!
+
+
         holder.title.text = currentItem.title
         holder.quantity.text = currentItem.quantity.toString()
-        holder.buy.text = currentItem.price + " €"
+        holder.buy.text = quantity.toString() + "€"
 
         holder.bind(currentItem, context)
     }
@@ -38,16 +41,28 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val quantitySubstractButton : Button = itemView.findViewById(R.id.shoppingcart_btn_substract)
         val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
 
+
+
+
         fun bind(dishItem : DishItem, context: Context) {
+
+
+
             quantityAddButton.setOnClickListener {
                 val newQuantity = Integer.parseInt(quantity.text.toString()) + 1
                 quantity.text = newQuantity.toString()
+
+                val price = dishItem.price.toFloat() * quantity.text.toString().toInt()
+                buy.text = price.toString() + "€"
             }
 
             quantitySubstractButton.setOnClickListener {
                 if (Integer.parseInt(quantity.text.toString()) > 1){
                     val newQuantity = Integer.parseInt(quantity.text.toString()) - 1
                     quantity.text = newQuantity.toString()
+
+                    val price = dishItem.price.toFloat() * quantity.text.toString().toInt()
+                    buy.text = price.toString() + "€"
                 }
             }
         }
