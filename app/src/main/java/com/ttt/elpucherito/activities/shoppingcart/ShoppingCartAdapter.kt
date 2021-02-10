@@ -1,21 +1,23 @@
 package com.ttt.elpucherito.activities.shoppingcart
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurant.DishItem
+import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 
 class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val context: Context) : RecyclerView.Adapter<ShoppingCartAdapter.ChartViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChartViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.shoppingcart_item, parent, false)
-
         return ChartViewHolder(itemView)
     }
 
@@ -25,7 +27,6 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val currentItem = dishesList[position]
 
         val quantity = currentItem.price.toFloat() * currentItem.quantity!!
-
 
         holder.title.text = currentItem.title
         holder.quantity.text = currentItem.quantity.toString()
@@ -42,8 +43,6 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
 
 
-
-
         fun bind(dishItem : DishItem, context: Context) {
 
 
@@ -54,7 +53,27 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
 
                 val price = dishItem.price.toFloat() * quantity.text.toString().toInt()
                 buy.text = price.toString() + "€"
+
+                Thread{
+                    val db = ElPucheritoDB.getInstance(context)
+                    val activeUser = db.userDao().getLoggedUser()
+                    val shoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(activeUser.user_id!!)
+                    val dishesShoppingCarts: List<DishShoppingCartRef> = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
+                    dishesShoppingCarts.forEach{
+                        if(it.dish_id == dishItem.dish_id ){
+                            it.quantity++
+                            db.dishShoppingCartDao().updateDishesShoppingCarts(it)
+                            return@Thread
+                        }
+                    }
+                }.start()
+
+                context as Activity
+                val tvTotal : TextView= context.findViewById(R.id.tv_precio)
+                tvTotal.text = (tvTotal.text.toString().toFloat() + dishItem.price.toFloat()).toString()
+
             }
+
 
             quantitySubstractButton.setOnClickListener {
                 if (Integer.parseInt(quantity.text.toString()) > 1){
@@ -63,6 +82,23 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
 
                     val price = dishItem.price.toFloat() * quantity.text.toString().toInt()
                     buy.text = price.toString() + "€"
+                    Thread{
+                        val db = ElPucheritoDB.getInstance(context)
+                        val activeUser = db.userDao().getLoggedUser()
+                        val shoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(activeUser.user_id!!)
+                        val dishesShoppingCarts: List<DishShoppingCartRef> = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
+                        dishesShoppingCarts.forEach{
+                            if(it.dish_id == dishItem.dish_id ){
+                                it.quantity--
+                                db.dishShoppingCartDao().updateDishesShoppingCarts(it)
+                                return@Thread
+                            }
+                        }
+                    }.start()
+                    //context.startActivity(Intent(context, ShoppingCartActivity::class.java))
+                    context as Activity
+                    val tvTotal : TextView= context.findViewById(R.id.tv_precio)
+                    tvTotal.text = (tvTotal.text.toString().toFloat() - dishItem.price.toFloat()).toString()
                 }
             }
         }

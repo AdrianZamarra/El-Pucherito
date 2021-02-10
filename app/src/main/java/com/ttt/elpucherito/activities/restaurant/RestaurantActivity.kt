@@ -115,4 +115,9 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         val restaurantsActivity = Intent(this, RestaurantsActivity::class.java)
         startActivity(restaurantsActivity)
     }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
 }
