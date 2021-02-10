@@ -1,16 +1,18 @@
 package com.ttt.elpucherito.activities.restaurant
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.shoppingcart.ShoppingCartActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.entities.Dish
 import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 import com.ttt.elpucherito.db.entities.ShoppingCart
 import com.ttt.elpucherito.db.entities.User
@@ -18,6 +20,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
+
 
 class ChartAdapter(private val dishesList : List<DishItem>, private val context: Context) : RecyclerView.Adapter<ChartAdapter.ChartViewHolder>() {
 
@@ -34,7 +37,7 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
 
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
-        holder.buy.text = currentItem.price
+        holder.buy.text = currentItem.price + "€"
         holder.bind(currentItem, context)
     }
 
@@ -45,8 +48,21 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
 
         fun bind(dishItem : DishItem, context: Context) {
             buy.setOnClickListener {
-                Toast.makeText(context, dishItem.title, Toast.LENGTH_SHORT).show()
+                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+                builder.setCancelable(true)
+                builder.setTitle("Añadido producto")
+                builder.setMessage("Se ha añadido correctamente el producto al carrito.")
+                builder.setPositiveButton("Aceptar",
+                    DialogInterface.OnClickListener { dialog, which -> })
+                builder.setNegativeButton(
+                    "Ir al carrito",
+                    DialogInterface.OnClickListener { dialog, which ->
+                        var shoppingCartIntent = Intent(context, ShoppingCartActivity::class.java)
+                        context.startActivity(shoppingCartIntent)
+                    })
 
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
                 addDishToShoppingCart(context,dishItem.dish_id)
             }
         }
