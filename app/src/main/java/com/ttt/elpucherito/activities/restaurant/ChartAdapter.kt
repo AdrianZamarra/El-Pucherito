@@ -34,7 +34,6 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
 
     override fun onBindViewHolder(holder: ChartViewHolder, position: Int) {
         val currentItem = dishesList[position]
-
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
         holder.buy.text = currentItem.price + "€"
