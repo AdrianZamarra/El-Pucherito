@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
         Thread {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user: User = db.userDao().getLoggedUser()

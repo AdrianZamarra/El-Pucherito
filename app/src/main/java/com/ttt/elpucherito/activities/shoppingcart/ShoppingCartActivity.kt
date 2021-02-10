@@ -14,6 +14,8 @@ import com.ttt.elpucherito.db.entities.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.coroutines.CoroutineContext
 
 class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
@@ -61,6 +63,8 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             val user: User = db.userDao().getLoggedUser()
             val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
             val dishesShoppingCarts = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
+
+            shoppingCart.parchase_date =  Date(12313231)
             if(dishesShoppingCarts.isEmpty()){
                 return@Thread
             }
