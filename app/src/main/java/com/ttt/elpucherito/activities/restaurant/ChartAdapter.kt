@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.Dish
-import com.ttt.elpucherito.db.entities.DishesShoppingCarts
+import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 import com.ttt.elpucherito.db.entities.ShoppingCart
 import com.ttt.elpucherito.db.entities.User
 import kotlinx.coroutines.CoroutineScope
@@ -46,14 +46,15 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
         fun bind(dishItem : DishItem, context: Context) {
             buy.setOnClickListener {
                 Toast.makeText(context, dishItem.title, Toast.LENGTH_SHORT).show()
-                addDishToShoppingCart(context, Dish(null, dishItem.title, dishItem.description, dishItem.price.toFloat(), dishItem.restaurantId))
+
+                addDishToShoppingCart(context,dishItem.dish_id)
             }
         }
 
         override val coroutineContext: CoroutineContext
             get() = Dispatchers.Main
 
-        private fun addDishToShoppingCart(context: Context, dish: Dish){
+        private fun addDishToShoppingCart(context: Context, dish_id: Int){
 
             Thread {
                 var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
@@ -61,13 +62,9 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
                 val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
                 launch{
 
-                    if (shoppingCart == null) {
-                        println("creado un carrito nuevo")
-                        db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
-                        db.dishesShoppingCartsDao().insertDishesShoppingCarts(DishesShoppingCarts(dish.dish_id!!,shoppingCart.shopping_cart_id!!))
-                    } else {
-                        println("Añadido un plato nuevo al carrito")
-                        db.dishesShoppingCartsDao().insertDishesShoppingCarts(DishesShoppingCarts(dish.dish_id!!,shoppingCart.shopping_cart_id!!))
+                    if (shoppingCart != null) {
+
+                        db.dishShoppingCartDao().insertDishesShoppingCarts(DishShoppingCartRef(dish_id,shoppingCart.shopping_cart_id!!))
                     }
                 }
             }.start()

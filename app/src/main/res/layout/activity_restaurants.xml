@@ -13,6 +13,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.MainActivity">
+
     <LinearLayout
         android:id="@+id/layoutToolBar"
         android:layout_width="match_parent"
@@ -34,7 +35,7 @@
 
         <TextView
             android:id="@+id/textTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:fontFamily="@font/seagram_tfb"
@@ -42,6 +43,12 @@
             android:textColor="@color/White"
             android:textSize="23sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_carrito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
 
     </LinearLayout>

@@ -7,13 +7,13 @@ import com.ttt.elpucherito.db.entities.Dish
 import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 import com.ttt.elpucherito.db.entities.ShoppingCart
 
-data class ShoppingCartWithDishes(
-    @Embedded val shoppingCart: ShoppingCart,
+data class DishWithShoppingCarts(
+    @Embedded val dish: Dish,
 
     @Relation(
-        parentColumn = "shopping_cart_id",
-        entityColumn = "dish_id",
+        parentColumn = "dish_id",
+        entityColumn = "shopping_cart_id",
         associateBy = Junction(DishShoppingCartRef::class)
     )
-    val dishes: List<Dish>
+    val shoppingCarts: List<ShoppingCart>
 )

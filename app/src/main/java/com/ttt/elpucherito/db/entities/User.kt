@@ -6,8 +6,9 @@ import androidx.room.*
 
 @Entity(tableName = "users",indices = (arrayOf(Index( value = ["email","phonenum"], unique = true))))
 data class User(
-    @PrimaryKey(autoGenerate = true) val user_id: Int?,
-
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "user_id", index = true)
+    val user_id: Int?,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "surname") val surname: String,
     @ColumnInfo(name = "address") val address: String,
