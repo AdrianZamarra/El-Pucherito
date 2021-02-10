@@ -76,7 +76,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             launch{
 
         }
-
+           
             val intent = Intent(this, CheckoutActivity::class.java)
             startActivity(intent)
     }.start()
