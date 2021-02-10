@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.shoppingcart.OrderActivity
 import com.ttt.elpucherito.activities.shoppingcart.ShoppingCartActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
 import com.ttt.elpucherito.activities.users.ModifyProfile
@@ -66,6 +67,12 @@ class RestaurantsActivity : AppCompatActivity() {
         
         val btnLogOut : Button = findViewById(R.id.btn_logout)
         btnLogOut.setOnClickListener {logOut(this)}
+
+        val btnOrder : Button = findViewById(R.id.btn_order)
+        btnOrder.setOnClickListener {
+            var intent = Intent(this, OrderActivity::class.java)
+            startActivity(intent)
+        }
         //val btnShoppingCart : Button = findViewById(R.id.btn_carrito)
         //btnShoppingCart.setOnClickListener {showShoppingCart(this)}
 
