@@ -76,10 +76,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/layout_navigation_header"
-        android:layout_gravity="start"
+        android:layout_gravity="end"
         app:menu="@menu/menu_user">
 
         <include layout="@layout/layout_navigation_header"/>
+
 
 
         <Button

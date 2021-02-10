@@ -28,7 +28,7 @@
         android:id="@+id/nameProfile"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="12dp"
         android:textColor="@color/Garnet"
         android:textSize="18sp"
         android:textStyle="bold"

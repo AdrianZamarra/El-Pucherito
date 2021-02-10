@@ -26,6 +26,8 @@ import com.ttt.elpucherito.db.entities.Restaurant
 class RestaurantsActivity : AppCompatActivity() {
 
     var nameProfile : TextView?= null
+
+    var menu : Menu?= null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,9 +52,14 @@ class RestaurantsActivity : AppCompatActivity() {
         nameProfile = this.findViewById(R.id.nameProfile)
         nameProfile?.setText("")
 
+        menu
+
+
+
+
+
         Thread{
 
-            println("ESTOY EN EL HILO")
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
             var user = db.userDao().getLoggedUser()
