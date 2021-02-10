@@ -14,7 +14,7 @@ import com.ttt.elpucherito.activities.restaurant.DishItem
 class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val context: Context) : RecyclerView.Adapter<ShoppingCartAdapter.ChartViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChartViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.restaurant_chart_dish, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.shoppingcart_item, parent, false)
 
         return ChartViewHolder(itemView)
     }
@@ -25,18 +25,31 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val currentItem = dishesList[position]
 
         holder.title.text = currentItem.title
-        holder.quantity.text = currentItem.description
-        holder.buy.text = currentItem.price
+        holder.quantity.text = currentItem.quantity.toString()
+        holder.buy.text = currentItem.price + " €"
+
         holder.bind(currentItem, context)
     }
 
     class ChartViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         val title : TextView = itemView.findViewById(R.id.shoppingcart_item_name)
+        val quantityAddButton : Button = itemView.findViewById(R.id.shoppingcart_btn_add)
         val quantity : TextView = itemView.findViewById(R.id.shoppingcart_item_quantity)
-        val buy : Button = itemView.findViewById(R.id.shoppingcart_item_price)
+        val quantitySubstractButton : Button = itemView.findViewById(R.id.shoppingcart_btn_substract)
+        val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
 
         fun bind(dishItem : DishItem, context: Context) {
-            buy.setOnClickListener { Toast.makeText(context, dishItem.title, Toast.LENGTH_SHORT).show() }
+            quantityAddButton.setOnClickListener {
+                val newQuantity = Integer.parseInt(quantity.text.toString()) + 1
+                quantity.text = newQuantity.toString()
+            }
+
+            quantitySubstractButton.setOnClickListener {
+                if (Integer.parseInt(quantity.text.toString()) > 1){
+                    val newQuantity = Integer.parseInt(quantity.text.toString()) - 1
+                    quantity.text = newQuantity.toString()
+                }
+            }
         }
     }
 }

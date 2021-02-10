@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                 var intent = Intent(this, RestaurantsActivity::class.java)
                startActivity(intent)
             } else {
-                var intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
         }.start()
