@@ -76,13 +76,22 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
                 var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
                 var user: User = db.userDao().getLoggedUser()
                 val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
+                val dishesShoppingCarts: List<DishShoppingCartRef> = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
+                dishesShoppingCarts.forEach{
+                    if(it.dish_id == dish_id ){
+                        it.quantity++
+                        return@Thread
+                    }
+                }
                 launch{
 
                     if (shoppingCart != null) {
 
-                        db.dishShoppingCartDao().insertDishesShoppingCarts(DishShoppingCartRef(dish_id,shoppingCart.shopping_cart_id!!))
+                        db.dishShoppingCartDao().insertDishesShoppingCarts(DishShoppingCartRef(dish_id,shoppingCart.shopping_cart_id!!,1))
                     }
+
                 }
+
             }.start()
         }
     }
