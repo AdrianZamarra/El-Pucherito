@@ -18,7 +18,8 @@ interface DishShoppingCartDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDishesShoppingCarts(dishShoppingCartRef: DishShoppingCartRef)
-
+    @Update
+    fun updateDishesShoppingCarts(dishShoppingCartRef: DishShoppingCartRef)
 
     @Query("DELETE FROM dishes_shopping_carts")
     suspend fun deleteAll()
