@@ -25,7 +25,7 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val currentItem = dishesList[position]
 
         holder.title.text = currentItem.title
-        holder.quantity.text = "1"
+        holder.quantity.text = currentItem.quantity.toString()
         holder.buy.text = currentItem.price + " €"
 
         holder.bind(currentItem, context)
