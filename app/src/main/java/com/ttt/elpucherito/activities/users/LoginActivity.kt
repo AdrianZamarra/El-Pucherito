@@ -84,10 +84,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
                 db.userDao().updateUser(user)
 
                 launch {
-                if(shoppingCart == null){
-                    db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                    if(shoppingCart == null){
+                        db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                    }
                 }
-            }
 
 
                 val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
@@ -102,5 +102,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
         loginEtPassword?.setText("")
 
 
+    }
+    override fun onPause() {
+        super.onPause()
+        this.finish()
+    }
+}
 
-}}

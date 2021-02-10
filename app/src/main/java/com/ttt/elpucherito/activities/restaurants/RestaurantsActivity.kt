@@ -127,4 +127,8 @@ class RestaurantsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    override fun onPause() {
+        super.onPause()
+        this.finish()
+    }
 }
