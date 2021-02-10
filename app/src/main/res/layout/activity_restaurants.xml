@@ -12,7 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.restaurants.RestaurantsActivity">
 
     <LinearLayout
         android:id="@+id/layoutToolBar"
@@ -44,11 +44,12 @@
             android:textSize="23sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_carrito"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+        <ImageView
+            android:id="@+id/img_carrito"
+            android:layout_width="37dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="140dp"
+            android:src="@drawable/ic_baseline_shopping_cart_24" />
 
 
     </LinearLayout>
@@ -74,15 +75,29 @@
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:headerLayout="@layout/layout_navigation_header"
         android:layout_gravity="start"
         app:menu="@menu/menu_user">
+
+        <include layout="@layout/layout_navigation_header"/>
+
 
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
             android:layout_gravity="center"
-            android:text="@string/cerrar_sesion" />
+            android:text="@string/signoff" />
+
+        <Button
+            android:id="@+id/btn_modify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="245dp"
+            android:layout_gravity="center"
+            android:text="Modificar" />
+
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
