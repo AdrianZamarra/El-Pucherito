@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ttt.elpucherito.db.entities.Dish
-import com.ttt.elpucherito.db.entities.DishesShoppingCarts
+import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 import com.ttt.elpucherito.db.entities.ShoppingCart
 import com.ttt.elpucherito.db.relations.ShoppingCartWithDishes
 
@@ -18,7 +18,7 @@ interface DishesShoppingCartsDao {
     fun getDishesWithShoppingCartID(ShoppingCartID:Int): List<DishesShoppingCartsDao>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertDishesShoppingCarts(dishesShoppingCarts: DishesShoppingCarts)
+    suspend fun insertDishesShoppingCarts(dishesShoppingCarts: DishShoppingCartRef)
 
     @Query("DELETE FROM users")
     suspend fun deleteAll()
