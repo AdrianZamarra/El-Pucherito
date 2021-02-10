@@ -71,7 +71,6 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         val assesment : RatingBar = itemView.findViewById(R.id.restaurants_rating)
         fun bind(restaurant : RestaurantItem, context: Context) {
             image.setOnClickListener {
-
                 var intent = Intent(context, RestaurantActivity::class.java)
                 intent.putExtra("Restaurant", restaurant)
                 context.startActivity(intent)

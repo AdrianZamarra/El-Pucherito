@@ -12,9 +12,15 @@ import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.daos.DishesShoppingCartsDao
+import com.ttt.elpucherito.db.entities.ShoppingCart
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+
+class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
 
     private var loginTvLogin : TextView ? = null
     private var loginEtEmail : EditText ? = null
@@ -46,6 +52,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         login()
     }
 
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
+
     fun login(){
 
         val email = loginEtEmail?.text.toString()
@@ -67,23 +76,31 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user = db.userDao().getValidateUser(email, pass)
 
+            var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
 
             if (user != null) {
 
                 user.logged = 1
                 db.userDao().updateUser(user)
 
+                launch {
+                if(shoppingCart == null){
+                    db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                }
+            }
+
+
                 val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
                 startActivity(restaurantScreen)
 
 
-            }else{}
+            }
 
         }.start()
         Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
-    }
 
 
-}
+
+}}

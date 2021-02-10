@@ -39,6 +39,7 @@
                         app:srcCompat="@drawable/abc_vector_test" />
 
                     <TextView
+                        android:id="@+id/text_prueba"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="bottom"
