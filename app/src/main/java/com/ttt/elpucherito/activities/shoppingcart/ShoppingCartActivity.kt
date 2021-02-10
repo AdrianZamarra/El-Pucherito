@@ -34,9 +34,11 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
 
             dishesShoppingCarts.forEach {
                 val id = it.dish_id
+                val quantity = it.quantity
+                println("Plato con id ${it.dish_id} con cantidad: ${it.quantity}")
                 dishesList.forEach {
                     if (it.dish_id == id){
-                        dishItems.add(DishItem(id, it.name, it.description, it.price.toString(), it.restaurant_id))
+                        dishItems.add(DishItem(id, it.name, it.description, it.price.toString(), it.restaurant_id, quantity))
                     }
                 }
             }
