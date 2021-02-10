@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 @TypeConverters(Converters::class)
-@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishShoppingCartRef::class], version = 5)
+@Database(entities = [User::class, Dish::class, Restaurant::class,ShoppingCart::class,Assessment::class,DishShoppingCartRef::class], version = 6)
 abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
 
     abstract fun userDao(): UserDao;
