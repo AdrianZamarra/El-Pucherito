@@ -1,6 +1,7 @@
 package com.ttt.elpucherito.activities.shoppingcart
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -55,7 +56,8 @@ private fun finishPurchase(context:Context){
              db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
 
         }
-
+        val mediaPlayer = MediaPlayer.create(this, R.raw.confirm_purchase)
+        mediaPlayer.start()
     }.start()
 
 }
