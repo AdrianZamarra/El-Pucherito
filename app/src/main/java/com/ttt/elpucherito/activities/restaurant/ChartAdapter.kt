@@ -80,6 +80,7 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
                 dishesShoppingCarts.forEach{
                     if(it.dish_id == dish_id ){
                         it.quantity++
+                        db.dishShoppingCartDao().updateDishesShoppingCarts(it)
                         return@Thread
                     }
                 }
