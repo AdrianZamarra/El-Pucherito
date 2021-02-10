@@ -22,6 +22,9 @@ import kotlin.coroutines.CoroutineContext
 
 class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
+
+
+
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
@@ -37,8 +40,8 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
         Thread{
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
-            val userEmail = db.userDao().getLoggedUser().email
-            val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userEmail, restaurant.resturant_id!!)
+            val loggedUser = db.userDao().getLoggedUser()
+            val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(loggedUser.email, restaurant.resturant_id!!)
             if (assesment != null){
                 restaurantAssesment.rating = assesment.rating
             }else{

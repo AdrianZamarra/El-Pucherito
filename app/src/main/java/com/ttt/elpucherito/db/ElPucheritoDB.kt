@@ -27,6 +27,7 @@ abstract class ElPucheritoDB : RoomDatabase(), CoroutineScope {
     abstract fun assessmentDao(): AssessmentDao;
     abstract fun dishShoppingCartDao():DishShoppingCartDao
 
+
 companion object {
     var  db: ElPucheritoDB? = null;
         fun getInstance(context: Context): ElPucheritoDB {

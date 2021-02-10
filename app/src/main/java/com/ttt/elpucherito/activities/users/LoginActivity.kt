@@ -11,6 +11,7 @@ import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 
 import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.db.daos.DishesShoppingCartsDao
 import com.ttt.elpucherito.db.entities.ShoppingCart
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,15 +19,8 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 
+
 class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
-
-
-    private var login_tv_login : TextView ? = null
-    private var login_et_email : EditText ? = null
-    private var login_et_password : EditText ? = null
-
-    private var login_btn_enter : Button ? = null
-    private var login_btn_singin : Button ? = null
 
     private var loginTvLogin : TextView ? = null
     private var loginEtEmail : EditText ? = null
@@ -34,19 +28,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
     private var loginBtnEnter : Button ? = null
     private var loginBtnSingin : Button ? = null
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        login_tv_login = findViewById(R.id.login_tv_login)
-        login_et_email = findViewById(R.id.login_et_email)
-        login_et_password = findViewById(R.id.login_et_password)
-        login_btn_enter = findViewById(R.id.login_btn_enter)
-        login_btn_singin = findViewById(R.id.login_btn_singin)
-        login_btn_enter!!.setOnClickListener(this)
 
         loginTvLogin = findViewById(R.id.login_tv_login)
         loginEtEmail = findViewById(R.id.login_et_email)
@@ -64,27 +49,35 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
     }
 
     override fun onClick(p0: View?) {
-        println("entro en el login")
         login()
     }
 
-
-
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
+
     fun login(){
 
         val email = loginEtEmail?.text.toString()
         val pass = loginEtPassword?.text.toString()
 
+        if(email == "" || pass == "") {
 
+
+            var aDialog = AlertDialog.Builder(this)
+            aDialog.setTitle(getText(R.string.invalidUser))
+            aDialog.setMessage(getText(R.string.errorField))
+            aDialog.setPositiveButton("ok") { dialog, id ->
+
+            }
+            aDialog.show()
+        }
         Thread {
 
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-
             val user = db.userDao().getValidateUser(email, pass)
+
             var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
+
             if (user != null) {
 
                 user.logged = 1
@@ -101,17 +94,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
                 startActivity(restaurantScreen)
 
 
-            } else {
-
-                //Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-
-
             }
+
         }.start()
         Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
-    }
 
 
-}
+
+}}

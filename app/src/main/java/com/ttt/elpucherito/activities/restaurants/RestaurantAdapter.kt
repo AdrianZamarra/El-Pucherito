@@ -36,10 +36,10 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         val id = context.resources.getIdentifier(currentItem.image, "drawable", context.packageName)
         holder.image.setImageResource(id)
         try {
-            println("hola")
+
             holder.assesment.rating = getAvgAssessment(currentItem)
         }catch (e : Exception){
-            println("error")
+
             holder.assesment.rating = 0f
         }
 
