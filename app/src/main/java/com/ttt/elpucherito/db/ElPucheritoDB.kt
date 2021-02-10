@@ -1,4 +1,4 @@
-package com.ttt.elpucherito.activities.restaurants
+package com.ttt.elpucherito.db
 
 import android.content.Context
 import androidx.room.Database

@@ -2,16 +2,14 @@ package com.ttt.elpucherito.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
-
+import com.ttt.elpucherito.activities.restaurant.RestaurantActivity
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
+
 import com.ttt.elpucherito.activities.shoppingcart.CheckoutActivity
-import com.ttt.elpucherito.activities.shoppingcart.ShoppingCartActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
-import com.ttt.elpucherito.activities.restaurants.ElPucheritoDB
+import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.User
 
 
@@ -25,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user: User = db.userDao().getLoggedUser()
             if (user != null) {
-                var intent = Intent(this, CheckoutActivity::class.java)
+                var intent = Intent(this, RestaurantsActivity::class.java)
                startActivity(intent)
             } else {
                 var intent = Intent(this, LoginActivity::class.java)

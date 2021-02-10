@@ -8,10 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 
-import com.ttt.elpucherito.activities.restaurants.ElPucheritoDB
+import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.db.entities.ShoppingCart
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
 
 
     private var login_tv_login : TextView ? = null
@@ -62,6 +67,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
 
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main
     fun login(){
 
         val email = loginEtEmail?.text.toString()
@@ -72,10 +79,18 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
             val user = db.userDao().getValidateUser(email, pass)
+            var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
             if (user != null) {
 
                 user.logged = 1
                 db.userDao().updateUser(user)
+
+                launch {
+                if(shoppingCart == null){
+                    db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                }
+            }
+
 
                 val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
                 startActivity(restaurantScreen)
