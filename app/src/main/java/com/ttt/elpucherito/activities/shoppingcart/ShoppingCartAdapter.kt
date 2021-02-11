@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
@@ -41,6 +42,9 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val quantity : TextView = itemView.findViewById(R.id.shoppingcart_item_quantity)
         val quantitySubstractButton : Button = itemView.findViewById(R.id.shoppingcart_btn_substract)
         val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
+
+        // BOTON PARA QUITAR DEL CARRITO
+        val deleteItemButton : ImageView = itemView.findViewById(R.id.shoppingcart_item_delete)
 
 
         fun bind(dishItem : DishItem, context: Context) {

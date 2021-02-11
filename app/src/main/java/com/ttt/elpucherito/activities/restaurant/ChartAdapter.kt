@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
@@ -43,7 +44,7 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
     class ChartViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView), CoroutineScope {
         val title : TextView = itemView.findViewById(R.id.restaurant_dish_name)
         val description : TextView = itemView.findViewById(R.id.restaurant_dish_description)
-        val buy : Button = itemView.findViewById(R.id.restaurant_dish_buy)
+        val buy : ImageView = itemView.findViewById(R.id.restaurant_dish_buy)
         val price : TextView = itemView.findViewById(R.id.restaurant_dish_price)
 
         fun bind(dishItem : DishItem, context: Context) {

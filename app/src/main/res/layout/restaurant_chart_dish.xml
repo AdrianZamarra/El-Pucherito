@@ -50,20 +50,30 @@
 
             <TextView
                 android:id="@+id/restaurant_dish_description"
-                android:layout_width="300dp"
+                android:layout_width="292dp"
                 android:layout_height="match_parent"
                 android:fontFamily="sans-serif-black"
-                android:gravity="center|center_horizontal|center_vertical"
+                android:gravity="center|center_vertical"
                 android:maxWidth="300dp"
-                android:text="@string/test_description" />
+                android:text="@string/test_description"
 
-            <Button
-                android:id="@+id/restaurant_dish_buy"
+                android:lines="3"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"/>
+
+            <Space
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/ic_baseline_shopping_cart_24"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/restaurant_dish_buy"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
                 android:gravity="center|center_horizontal"
-                android:maxHeight="20dp" />
+                android:maxHeight="20dp"
+
+                android:src="@drawable/ic_badd_shopping_cart" />
 
         </LinearLayout>
     </LinearLayout>

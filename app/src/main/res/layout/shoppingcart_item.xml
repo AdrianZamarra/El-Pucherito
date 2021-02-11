@@ -18,7 +18,10 @@
             android:layout_weight="1"
             android:gravity="center"
             android:minHeight="70dp"
-            android:text="@string/namedish" />
+            android:text="@string/namedish"
+            android:lines="2"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,6 +68,15 @@
             android:gravity="center"
             android:minHeight="70dp"
             android:text="@string/dishprice" />
+
+        <ImageView
+            android:id="@+id/shoppingcart_item_delete"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_cancel"
+            />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
