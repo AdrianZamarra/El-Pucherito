@@ -34,10 +34,9 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
 
     override fun onBindViewHolder(holder: ChartViewHolder, position: Int) {
         val currentItem = dishesList[position]
-
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
-        holder.buy.text = currentItem.price + "€"
+        holder.price.text = currentItem.price + "€"
         holder.bind(currentItem, context)
     }
 
@@ -45,6 +44,7 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
         val title : TextView = itemView.findViewById(R.id.restaurant_dish_name)
         val description : TextView = itemView.findViewById(R.id.restaurant_dish_description)
         val buy : Button = itemView.findViewById(R.id.restaurant_dish_buy)
+        val price : TextView = itemView.findViewById(R.id.restaurant_dish_price)
 
         fun bind(dishItem : DishItem, context: Context) {
             buy.setOnClickListener {
