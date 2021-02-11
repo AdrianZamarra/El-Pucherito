@@ -2,21 +2,43 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/restaurant_dish_card1"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="150dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@drawable/border"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/restaurant_dish_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center|center_horizontal"
             android:layout_weight="1"
-            android:gravity="center|center_horizontal"
-            android:text="@string/test_name" />
+            android:background="@drawable/border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/restaurant_dish_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center|center_horizontal"
+                android:text="@string/test_name" />
+
+            <TextView
+                android:id="@+id/restaurant_dish_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/border"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center|center_horizontal|center_vertical"
+                android:padding="20dp"
+                android:text="@string/prueba" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,6 +52,7 @@
                 android:id="@+id/restaurant_dish_description"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center|center_horizontal|center_vertical"
                 android:maxWidth="300dp"
                 android:text="@string/test_description" />
@@ -38,10 +61,9 @@
                 android:id="@+id/restaurant_dish_buy"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_login"
+                android:background="@drawable/ic_baseline_shopping_cart_24"
                 android:gravity="center|center_horizontal"
-                android:maxHeight="20dp"
-                android:text="@string/test_price" />
+                android:maxHeight="20dp" />
 
         </LinearLayout>
     </LinearLayout>

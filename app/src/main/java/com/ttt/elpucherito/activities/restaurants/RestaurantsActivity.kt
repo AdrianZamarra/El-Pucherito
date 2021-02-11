@@ -4,30 +4,29 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.shoppingcart.OrderActivity
 import com.ttt.elpucherito.activities.shoppingcart.ShoppingCartActivity
 import com.ttt.elpucherito.activities.users.LoginActivity
 import com.ttt.elpucherito.activities.users.ModifyProfile
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.Restaurant
 
+
 class RestaurantsActivity : AppCompatActivity() {
 
     var nameProfile : TextView?= null
-
-    var menu : Menu?= null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,34 +51,38 @@ class RestaurantsActivity : AppCompatActivity() {
         nameProfile = this.findViewById(R.id.nameProfile)
         nameProfile?.setText("")
 
-        menu
-
-
-
-
-
         Thread{
 
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
-            var user = db.userDao().getLoggedUser()
-
+            val user = db.userDao().getLoggedUser()
 
             nameProfile!!.append(user.name)
+            var navigationView : NavigationView = findViewById(R.id.navigationView)
+
+            navigationView.menu.findItem(R.id.menuSurname).setVisible(false).title = user.surname
+            navigationView.menu.findItem(R.id.menuPhone).title = user.phonenum.toString()
+            navigationView.menu.findItem(R.id.menuAddress).title = user.address
+            navigationView.menu.findItem(R.id.menuEmail).title = user.email
+            navigationView.menu.findItem(R.id.menuPassword).setVisible(false).title = "**********"
 
         }.start()
 
         imageMenu!!.setOnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  }
-
+        
         val btnLogOut : Button = findViewById(R.id.btn_logout)
         btnLogOut.setOnClickListener {logOut(this)}
-        //val btnShoppingCart : Button = findViewById(R.id.btn_carrito)
-        //btnShoppingCart.setOnClickListener {showShoppingCart(this)}
 
-
+        val btnOrder : Button = findViewById(R.id.btn_order)
+        btnOrder.setOnClickListener {
+            var intent = Intent(this, OrderActivity::class.java)
+            startActivity(intent)
+        }
 
         val modifyProfile : Button = findViewById(R.id.btn_modify)
         modifyProfile.setOnClickListener {modifyView(this)}
+
+
+
     }
 
     private fun getRestaurants() : ArrayList<RestaurantItem>{

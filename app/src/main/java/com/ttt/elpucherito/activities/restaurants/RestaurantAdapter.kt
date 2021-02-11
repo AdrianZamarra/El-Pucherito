@@ -35,8 +35,8 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         holder.name.text = currentItem.name
         val id = context.resources.getIdentifier(currentItem.image, "drawable", context.packageName)
         holder.image.setImageResource(id)
+        holder.category.text = currentItem.category
         try {
-
             holder.assesment.rating = getAvgAssessment(currentItem)
         }catch (e : Exception){
 
@@ -59,7 +59,6 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
                     }
                 }
         }.start()
-        //TODO IMPORTANTE CAMBIAR
         Thread.sleep(10)
         println(finalAssessment)
         return finalAssessment / nAssesments
@@ -69,12 +68,13 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         val name : TextView = itemView.findViewById(R.id.restaurants_name)
         var image : ImageView = itemView.findViewById(R.id.restaurants_image)
         val assesment : RatingBar = itemView.findViewById(R.id.restaurants_rating)
+        val category : TextView = itemView.findViewById(R.id.restaurants_tv_category)
         fun bind(restaurant : RestaurantItem, context: Context) {
             image.setOnClickListener {
                 var intent = Intent(context, RestaurantActivity::class.java)
                 intent.putExtra("Restaurant", restaurant)
                 context.startActivity(intent)
-                Toast.makeText(context, restaurant.name, Toast.LENGTH_SHORT).show() }
+            }
         }
     }
 }

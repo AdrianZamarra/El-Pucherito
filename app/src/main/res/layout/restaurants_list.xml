@@ -9,6 +9,7 @@
         android:id="@+id/restaurants_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/restaurantimage"
         android:scaleType="centerCrop"
         android:src="@drawable/elabuelo" />
 
@@ -24,7 +25,7 @@
             android:layout_gravity="bottom"
             android:background="#8c000000"
             android:padding="10dp"
-            android:text="PRUEBA"
+            android:text="@string/prueba"
             android:textColor="#ffe3e3e3"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -35,6 +36,15 @@
             android:layout_height="wrap_content"
             android:progressTint="@color/Gold"
             android:isIndicator="true"/>
+
+        <TextView
+            android:id="@+id/restaurants_tv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Categoría: "
+            android:textColor="#FFF8F8"
+            android:textSize="28dp" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

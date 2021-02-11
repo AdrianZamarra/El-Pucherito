@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
 
 class ModifyProfile : AppCompatActivity(), View.OnClickListener {
@@ -62,28 +63,34 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
             var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user = db.userDao().getLoggedUser()
 
-            if (name.isEmpty()) {
+            if (name != "") {
                 user.name = name
             }
-            if (surname.isEmpty()) {
+            if (surname != "") {
                 user.surname = surname
             }
-            if (address.isEmpty()) {
+            if (address != "") {
                 user.address = address
             }
-            if (phone.isEmpty()) {
+            if (phone != "") {
                 user.phonenum = phone.toInt()
             }
-            if (email.isEmpty()) {
+            if (email != "") {
                 user.email = email
             }
-            if (password.isEmpty()) {
+            if (password != "") {
                 user.password = password
             }
 
             db.userDao().updateUser(user)
 
             println(user)
+            startActivity(Intent(this, RestaurantsActivity::class.java))
         }.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 }
