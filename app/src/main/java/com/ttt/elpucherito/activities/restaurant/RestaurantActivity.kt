@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +33,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant)
 
-        val restaurantAvatar : ImageView = findViewById(R.id.restaurant_avatar)
+        val restaurantAvatar : LinearLayout = findViewById(R.id.restaurant_lo_image)
         val restaurantTvName : TextView  = findViewById(R.id.restaurant_tv_name)
         val restaurantAssesment : RatingBar = findViewById(R.id.restaurant_ratingbar)
 
@@ -80,7 +81,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         restaurantTvName.text = restaurant.name
 
         val id = this.resources.getIdentifier(restaurant.image, "drawable", this.packageName)
-        restaurantAvatar.setImageResource(id)
+        restaurantAvatar.setBackgroundResource(id)
 
         val dishes : ArrayList<DishItem>
 

@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
 import com.ttt.elpucherito.R
-import java.util.HashMap
+import java.util.*
+
 class OrderExpandableListAdapter internal constructor(
     private val context: Context,
     private val titleList: List<String>,
-    private val dataList: HashMap<String, List<String>>
+    private val dataList: MutableMap<String, List<String>>
 ) : BaseExpandableListAdapter() {
     override fun getChild(listPosition: Int, expandedListPosition: Int): Any {
         return this.dataList[this.titleList[listPosition]]!![expandedListPosition]
