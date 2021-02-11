@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,11 +53,9 @@ class RestaurantsActivity : AppCompatActivity() {
         nameProfile = this.findViewById(R.id.nameProfile)
         nameProfile?.setText("")
 
-        menu
+        var nombreMenu = menu?.get(0)?.title.toString()
 
-
-
-
+        println(nombreMenu)
 
         Thread{
 
@@ -73,10 +72,6 @@ class RestaurantsActivity : AppCompatActivity() {
 
         val btnLogOut : Button = findViewById(R.id.btn_logout)
         btnLogOut.setOnClickListener {logOut(this)}
-        //val btnShoppingCart : Button = findViewById(R.id.btn_carrito)
-        //btnShoppingCart.setOnClickListener {showShoppingCart(this)}
-
-
 
         val modifyProfile : Button = findViewById(R.id.btn_modify)
         modifyProfile.setOnClickListener {modifyView(this)}
