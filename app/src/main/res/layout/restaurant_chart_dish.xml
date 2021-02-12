@@ -25,6 +25,7 @@
                 android:layout_gravity="center|center_horizontal"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
+                android:textStyle="bold"
                 android:gravity="center|center_horizontal"
                 android:text="@string/test_name" />
 
