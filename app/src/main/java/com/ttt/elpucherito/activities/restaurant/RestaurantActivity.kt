@@ -55,7 +55,6 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         restaurantAssesment.setOnRatingBarChangeListener( object : RatingBar.OnRatingBarChangeListener {
             override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
                 Thread {
-                    println("Se ha cambiado!!")
                     var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
                     var userMail = db.userDao().getLoggedUser().email
                     val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userMail, restaurant.resturant_id!!)

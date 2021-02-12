@@ -52,13 +52,13 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
                 val builder = AlertDialog.Builder(context)
                 with(builder){
                     setCancelable(true)
-                    setTitle("Producto añadido")
-                    setMessage("Se ha añadido correctamente el producto al carrito.")
-                    setPositiveButton("Continuar comprando",
+                    setTitle(context.getString(R.string.product_added))
+                    setMessage(context.getString(R.string.product_added_information))
+                    setPositiveButton(context.getString(R.string.keep_buying),
                         DialogInterface.OnClickListener { dialog, which ->
                         })
                     setNegativeButton(
-                        "Ir al carrito",
+                        context.getString(R.string.go_shopping_cart),
                         DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
                                 var shoppingCartIntent = Intent(context, ShoppingCartActivity::class.java)
                                 context.startActivity(shoppingCartIntent)

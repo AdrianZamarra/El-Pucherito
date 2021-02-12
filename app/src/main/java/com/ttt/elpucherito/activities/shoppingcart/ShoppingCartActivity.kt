@@ -78,9 +78,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
                 val dishId = it.dish_id
                 val quantity = it.quantity
                 dishesList.forEach {
-                    println("Plato1: $dishId,Plato2: ${it.dish_id}")
                     if (dishId == it.dish_id){
-                        println("dios vcaraoibrioba")
                         totalPrice += it.price * quantity
                     }
                 }
