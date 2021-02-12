@@ -7,8 +7,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.annotation.GlideModule
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
