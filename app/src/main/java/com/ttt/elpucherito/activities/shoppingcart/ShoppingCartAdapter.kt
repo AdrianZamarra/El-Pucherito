@@ -9,13 +9,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
+import com.ttt.elpucherito.activities.MainActivity
 import com.ttt.elpucherito.activities.restaurant.DishItem
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 
-class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val context: Context) : RecyclerView.Adapter<ShoppingCartAdapter.ChartViewHolder>() {
+
+class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private val context: Context) : RecyclerView.Adapter<ShoppingCartAdapter.ChartViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChartViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.shoppingcart_item, parent, false)
@@ -23,6 +26,7 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
     }
 
     override fun getItemCount() = dishesList.size
+
 
     override fun onBindViewHolder(holder: ChartViewHolder, position: Int) {
         val currentItem = dishesList[position]
@@ -33,6 +37,30 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         holder.quantity.text = currentItem.quantity.toString()
         holder.buy.text = quantity.toString() + "€"
 
+        holder.removeDishButton.setOnClickListener(View.OnClickListener {
+            Thread {
+                val db = ElPucheritoDB.getInstance(context)
+                val activeUser = db.userDao().getLoggedUser()
+                val shoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(activeUser.user_id!!)
+                val dishesShoppingCarts: List<DishShoppingCartRef> = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
+
+                db.dishShoppingCartDao().deleteWithDishID(currentItem.dish_id)
+
+                dishesList.removeAt(holder.adapterPosition);
+
+                notifyItemRemoved(holder.adapterPosition);
+                notifyItemRangeChanged(holder.adapterPosition,getItemCount());
+
+
+
+            }.start()
+            context as Activity
+            val tvTotal : TextView= context.findViewById(R.id.tv_precio)
+            tvTotal.text = (tvTotal.text.toString().toFloat() - (currentItem.price.toFloat()*holder.quantity.text.toString().toFloat())).toString()
+
+        })
+
+
         holder.bind(currentItem, context)
     }
 
@@ -42,6 +70,7 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val quantity : TextView = itemView.findViewById(R.id.shoppingcart_item_quantity)
         val quantitySubstractButton : Button = itemView.findViewById(R.id.shoppingcart_btn_substract)
         val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
+        val removeDishButton : ImageView = itemView.findViewById(R.id.shoppingcart_item_delete)
 
         // BOTON PARA QUITAR DEL CARRITO
         val deleteItemButton : ImageView = itemView.findViewById(R.id.shoppingcart_item_delete)
@@ -103,6 +132,11 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
                     tvTotal.text = (tvTotal.text.toString().toFloat() - dishItem.price.toFloat()).toString()
                 }
             }
+
+
+
+
         }
+
     }
 }

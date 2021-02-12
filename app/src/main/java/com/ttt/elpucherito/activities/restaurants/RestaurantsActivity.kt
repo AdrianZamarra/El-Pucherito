@@ -46,17 +46,12 @@ class RestaurantsActivity : AppCompatActivity() {
 
         val imageCart : ImageView?= findViewById(R.id.img_carrito)
         imageCart!!.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, ShoppingCartActivity::class.java)
+            val intent = Intent(this, ShoppingCartActivity::class.java)
             startActivity(intent)
         } )
 
         nameProfile = this.findViewById(R.id.nameProfile)
-        nameProfile?.setText("")
-
-        var nombreMenu = menu?.get(0)?.title.toString()
-
-        println(nombreMenu)
-
+        nameProfile?.text = ""
 
         Thread{
 
@@ -135,7 +130,7 @@ class RestaurantsActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        finish()
     }
     private fun showShoppingCart(context: Context){
         var intent = Intent(context, ShoppingCartActivity::class.java)

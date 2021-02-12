@@ -1,10 +1,9 @@
 package com.ttt.elpucherito.activities.shoppingcart
 
-import android.media.MediaPlayer
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +26,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shoppingcart)
         val dishItems : ArrayList<DishItem> = ArrayList()
+        val btnBack : ImageView = findViewById(R.id.shoppingcart_btn_back)
         Thread{
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val shoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(db.userDao().getLoggedUser().user_id!!)
@@ -55,10 +55,19 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
+        btnBack.setOnClickListener{
+            val intent = Intent(this, RestaurantsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private fun getTotalPrice() : String {
-        var totalPrice = 0f
+
+        var   totalPrice = 0f
         Thread {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user: User = db.userDao().getLoggedUser()
@@ -78,7 +87,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             }
         }.start()
 
-        Thread.sleep(20)
+        Thread.sleep(80)
         return totalPrice.toString()
     }
 
@@ -88,12 +97,16 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
     private fun finishPurchase(){
         Thread {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
             val user: User = db.userDao().getLoggedUser()
             val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
             val dishesShoppingCarts = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
 
-            shoppingCart.parchase_date =  Date(12313231)
+            var quantity = 0
+            dishesShoppingCarts.forEach{
+                quantity += it.quantity
+            }
+
+            shoppingCart.purchase_date =  Date(Calendar.getInstance().timeInMillis)
             if(dishesShoppingCarts.isEmpty()){
                 return@Thread
             }
@@ -101,12 +114,10 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             db.shoppingCartDao().updateShoppingCart(shoppingCart)
             launch{
                 db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1, user.user_id))
-
             }
 
-
-
             val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("quantity", quantity)
             startActivity(intent)
         }.start()
     }
@@ -119,4 +130,5 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         super.onPause()
         finish()
     }
+
 }

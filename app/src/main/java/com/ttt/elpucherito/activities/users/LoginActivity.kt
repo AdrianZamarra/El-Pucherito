@@ -1,6 +1,5 @@
 package com.ttt.elpucherito.activities.users
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,7 +10,6 @@ import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 
 import com.ttt.elpucherito.db.ElPucheritoDB
-import com.ttt.elpucherito.db.daos.DishesShoppingCartsDao
 import com.ttt.elpucherito.db.entities.ShoppingCart
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -62,41 +60,43 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
 
         if(email == "" || pass == "") {
 
-
-            var aDialog = AlertDialog.Builder(this)
+            Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
+            val aDialog = AlertDialog.Builder(this)
             aDialog.setTitle(getText(R.string.invalidUser))
             aDialog.setMessage(getText(R.string.errorField))
             aDialog.setPositiveButton("ok") { dialog, id ->
 
             }
             aDialog.show()
-        }
-        Thread {
+        }else{
 
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-            val user = db.userDao().getValidateUser(email, pass)
+            Thread {
 
-            var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
+                var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+                val user = db.userDao().getValidateUser(email, pass)
 
-            if (user != null) {
+                var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
 
-                user.logged = 1
-                db.userDao().updateUser(user)
+                if (user != null) {
 
-                launch {
-                    if(shoppingCart == null){
-                        db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                    user.logged = 1
+                    db.userDao().updateUser(user)
+
+                    launch {
+                        if(shoppingCart == null){
+                            db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                        }
                     }
+
+
+                    val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
+                    startActivity(restaurantScreen)
+
+
                 }
 
-
-                val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
-                startActivity(restaurantScreen)
-
-
-            }
-
-        }.start()
+            }.start()
+        }
         Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")

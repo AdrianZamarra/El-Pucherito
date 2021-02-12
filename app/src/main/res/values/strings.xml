@@ -60,5 +60,6 @@
     <string name="total">Total</string>
     <string name="prueba">PRUEBA</string>
     <string name="restaurantimage">RestaurantImage</string>
+    <string name="tiempo_de_entrega">Tiempo de entrega:</string>
 
 </resources>
