@@ -51,12 +51,9 @@ class RestaurantsActivity : AppCompatActivity() {
         } )
 
         nameProfile = this.findViewById(R.id.nameProfile)
-        nameProfile?.setText("")
+        nameProfile?.text = ""
 
-        var nombreMenu = menu?.get(0)?.title.toString()
-
-        println(nombreMenu)
-
+        var nombreMenu = menu!![0].title.toString()
 
         Thread{
 

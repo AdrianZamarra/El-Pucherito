@@ -114,7 +114,7 @@ class OrderActivity : AppCompatActivity() {
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
 
             val orders = db.shoppingCartDao().getOrders()
-            var totalPrice : Float = 0f
+            var totalPrice = 0f
             orders.forEach{
 
                 var mutableList: MutableList<String> = ArrayList()
