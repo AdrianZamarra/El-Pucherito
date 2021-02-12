@@ -3,6 +3,7 @@ package com.ttt.elpucherito.activities.restaurant
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
@@ -23,9 +24,6 @@ import kotlin.coroutines.CoroutineContext
 
 class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
-
-
-
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
@@ -37,6 +35,14 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         val restaurantTvName : TextView  = findViewById(R.id.restaurant_tv_name)
         val restaurantAssesment : RatingBar = findViewById(R.id.restaurant_ratingbar)
         val restaurantAddress : TextView = findViewById(R.id.restaurant_tv_address)
+
+
+        val arrowImage : ImageView = findViewById(R.id.imageArrow)
+
+        arrowImage.setOnClickListener{
+            var intent = Intent(this, RestaurantsActivity::class.java)
+            startActivity(intent)
+        }
 
         val restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
 
@@ -94,7 +100,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
     private fun getDishesFromRestaurant(restaurant : RestaurantItem) : ArrayList<DishItem> {
         var dishList : List<RestaurantWithDishes>
-        var dishItems : ArrayList<DishItem> = ArrayList()
+        val dishItems : ArrayList<DishItem> = ArrayList()
         Thread {
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
             dishList = db.restaurantDao().getDishes()
