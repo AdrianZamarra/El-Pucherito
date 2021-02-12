@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:gravity="center|center_horizontal|center_vertical"
-        android:text="PEDIDOS REALIZADOS"
+        android:text="@string/pedidos_realizados"
         android:textSize="32sp" />
 
     <RelativeLayout

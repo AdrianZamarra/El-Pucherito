@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Categoría: "
+            android:text="@string/categoria"
             android:textColor="#FFF8F8"
             android:textSize="28dp" />
     </LinearLayout>

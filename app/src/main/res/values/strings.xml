@@ -61,5 +61,11 @@
     <string name="product_added_information">Se ha añadido correctamente el producto al carrito.</string>
     <string name="keep_buying">Continuar comprando</string>
     <string name="go_shopping_cart">Ir al carrito</string>
+    <string name="a_adir_al_carrito_imagen">Añadir al carrito imagen</string>
+    <string name="must_fill">¡Tienes que rellenar todos los campos!</string>
+    <string name="pedidos_realizados">PEDIDOS REALIZADOS</string>
+    <string name="categoria">Categoría:</string>
+    <string name="resta">-</string>
+    <string name="suma">+</string>
 
 </resources>

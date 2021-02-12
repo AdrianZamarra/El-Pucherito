@@ -45,15 +45,10 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
         signEtPassword = findViewById(R.id.sign_et_password)
         signEtPhone = findViewById(R.id.sign_et_phonenumber)
 
-        // Implemento setOnClickListener
         signBtnEnter!!.setOnClickListener(this)
 
     }
 
-    /*
-    * Function of collecting data
-    * Insert data in DB
-    */
     fun collectData() {
 
         val name = signEtName?.text.toString()
@@ -63,7 +58,7 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
         val email = signEtEmail?.text.toString()
         val pass = signEtPassword?.text.toString()
 
-        if (name.equals("") || surname.equals("") || address.equals("") || phone.equals("") || email.equals("") || pass.equals("") ){
+        if (name == "" || surname == "" || address == "" || phone == "" || email == "" || pass == ""){
             signEtName?.setText("")
             signEtSurname?.setText("")
             signEtAddress?.setText("")
@@ -71,7 +66,7 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
             signEtPassword?.setText("")
             signEtPhone?.setText("")
 
-            Toast.makeText(this,"¡Tienes que rellenar todos los campos!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,getString(R.string.must_fill),Toast.LENGTH_SHORT).show()
         }else{
             val user = User(null, name, surname, address, phone.toInt(), email, pass,0)
 
@@ -100,5 +95,4 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
         super.onPause()
         finish()
     }
-
 }

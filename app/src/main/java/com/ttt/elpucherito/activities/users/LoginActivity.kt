@@ -100,7 +100,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
         }
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
-
     }
     override fun onPause() {
         super.onPause()
