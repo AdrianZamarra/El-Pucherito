@@ -30,7 +30,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
         loginTvLogin = findViewById(R.id.login_tv_login)
         loginEtEmail = findViewById(R.id.login_et_email)
         loginEtPassword = findViewById(R.id.login_et_password)
@@ -39,7 +38,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
 
         loginBtnEnter!!.setOnClickListener(this)
     }
-
 
     fun goSignin(view: View){
         var goSignScreen = Intent(this,SignActivity::class.java)
@@ -60,14 +58,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
 
         if(email == "" || pass == "") {
 
-            Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
-            val aDialog = AlertDialog.Builder(this)
-            aDialog.setTitle(getText(R.string.invalidUser))
-            aDialog.setMessage(getText(R.string.errorField))
-            aDialog.setPositiveButton("ok") { dialog, id ->
+            Toast.makeText(this, getString(R.string.emptyFields), Toast.LENGTH_SHORT).show()
 
-            }
-            aDialog.show()
         }else{
 
             Thread {
@@ -88,19 +80,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
                         }
                     }
 
-
                     val restaurantScreen = Intent(this, RestaurantsActivity::class.java)
                     startActivity(restaurantScreen)
 
-
                 }
-
             }.start()
         }
-        Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT)
+        Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT).show()
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
-
 
     }
     override fun onPause() {

@@ -6,10 +6,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
@@ -26,6 +23,7 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
     private var modifyEtName: EditText? = null
     private var modifyEtSurname: EditText? = null
     private var modifyEtPhone: EditText? = null
+    private var btnArrowBack : ImageView?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +39,16 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
         modifyEtPassword = findViewById(R.id.modify_et_password)
         modifyEtPhone = findViewById(R.id.modify_et_phonenumber)
 
+        btnArrowBack = findViewById(R.id.imageArrow)
+
         modifyBtnSave!!.setOnClickListener(this)
+
+
+        btnArrowBack!!.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this, RestaurantsActivity::class.java)
+            startActivity(intent)
+        })
+
 
 
     }

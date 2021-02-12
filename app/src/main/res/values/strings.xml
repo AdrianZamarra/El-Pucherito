@@ -3,13 +3,13 @@
     <string name="restaurant_chart">CARTA</string>
     <string name="title_activity_restaurants">RestaurantsActivity</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_password">Contraseña</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="welcome">"Bienvenido!"</string>
+    <string name="invalid_username">Nombre invalido</string>
+    <string name="invalid_password">Debe contener >5 caracteres</string>
+    <string name="login_failed">"Error de inicio"</string>
     <string name="restaurants">RESTAURANTES</string>
 
     <!---->
@@ -19,31 +19,26 @@
 
     <!-- Acciones de la app -->
 
-    <string name="stayIn">Mantener conectado</string>
     <string name="signoff">Cerrar sesion</string>
     <string name="savechanges">Guardar</string>
     <string name="next">Siguiente</string>
-
-
 
     <!-- Caracteristicas de USUARIO -->
     <string name="name">Nombre</string>
     <string name="surname">Apellidos</string>
     <string name="phone">Telefono</string>
     <string name="email">E-Mail</string>
-    <string name="username">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="address">Direccion</string>
+
+    <string name="invalidUser">Usuario no valido</string>
+
+    <string name="emptyFields">Campos Vacios</string>
 
     <!-- Modify user -->
 
     <string name="modifyUser">Modificar usuario</string>
     <string name="edit">Editar</string>
-
-    <!-- TOAST MESSAGE -->
-
-    <string name="invalidUser">Usuario o contraseña erroneo</string>
-    <string name="errorField">Error in fields</string>
 
     <!---->
     <string name="test_name">Nombre</string>
