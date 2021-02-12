@@ -56,5 +56,10 @@
     <string name="prueba">PRUEBA</string>
     <string name="restaurantimage">RestaurantImage</string>
     <string name="tiempo_de_entrega">Tiempo de entrega:</string>
+    <string name="non_existing_products">No existe ningun pedido</string>
+    <string name="product_added">Producto añadido</string>
+    <string name="product_added_information">Se ha añadido correctamente el producto al carrito.</string>
+    <string name="keep_buying">Continuar comprando</string>
+    <string name="go_shopping_cart">Ir al carrito</string>
 
 </resources>

@@ -16,6 +16,10 @@ interface DishShoppingCartDao {
     @Query("SELECT * FROM dishes_shopping_carts WHERE shopping_cart_id = :ShoppingCartID")
     fun getDishesWithShoppingCartID(ShoppingCartID:Int): List<DishShoppingCartRef>
 
+    @Transaction
+    @Query("SELECT quantity FROM dishes_shopping_carts WHERE shopping_cart_id = :ShoppingCartID and dish_id =:dishID")
+    fun getDishQuantityWithDishIDAndShoppingCartID(dishID:Int, ShoppingCartID:Int): Int
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDishesShoppingCarts(dishShoppingCartRef: DishShoppingCartRef)
     @Update
