@@ -1,24 +1,18 @@
 package com.ttt.elpucherito.activities.shoppingcart
 
-import android.content.Context
-import android.media.MediaPlayer
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurant.DishItem
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
-import com.ttt.elpucherito.activities.users.LoginActivity
-import com.ttt.elpucherito.activities.users.ModifyProfile
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.*
-import kotlinx.android.synthetic.main.activity_shoppingcart.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +26,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shoppingcart)
         val dishItems : ArrayList<DishItem> = ArrayList()
+        val btnBack : ImageView = findViewById(R.id.shoppingcart_btn_back)
         Thread{
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val shoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(db.userDao().getLoggedUser().user_id!!)
@@ -60,20 +55,10 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
-
-        val btnLogOut : Button = findViewById(R.id.btn_logout)
-        btnLogOut.setOnClickListener {logOut(this)}
-
-        val btnOrder : Button = findViewById(R.id.btn_order)
-        btnOrder.setOnClickListener {
-            var intent = Intent(this, OrderActivity::class.java)
+        btnBack.setOnClickListener{
+            val intent = Intent(this, RestaurantsActivity::class.java)
             startActivity(intent)
         }
-
-        val modifyProfile : Button = findViewById(R.id.btn_modify)
-        modifyProfile.setOnClickListener {modifyView(this)}
-        imageMenu!!.setOnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  }
-
     }
 
     override fun onResume() {
@@ -112,12 +97,16 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
     private fun finishPurchase(){
         Thread {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
-
             val user: User = db.userDao().getLoggedUser()
             val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
             val dishesShoppingCarts = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
 
-            shoppingCart.purchase_date =  Date(java.util.Calendar.getInstance().timeInMillis)
+            var quantity = 0
+            dishesShoppingCarts.forEach{
+                quantity += it.quantity
+            }
+
+            shoppingCart.purchase_date =  Date(Calendar.getInstance().timeInMillis)
             if(dishesShoppingCarts.isEmpty()){
                 return@Thread
             }
@@ -125,12 +114,10 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             db.shoppingCartDao().updateShoppingCart(shoppingCart)
             launch{
                 db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1, user.user_id))
-
             }
 
-
-
             val intent = Intent(this, CheckoutActivity::class.java)
+            intent.putExtra("quantity", quantity)
             startActivity(intent)
         }.start()
     }
@@ -142,25 +129,6 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
     override fun onPause() {
         super.onPause()
         finish()
-    }
-    private fun modifyView(context: Context){
-        var intent = Intent(context, ModifyProfile::class.java)
-        startActivity(intent)
-    }
-
-    private fun logOut(context: Context) {
-        Thread {
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
-
-            val user = db.userDao().getLoggedUser()
-            if (user != null) {
-
-                user.logged = 0
-                db.userDao().updateUser(user)
-                var intent = Intent(context, LoginActivity::class.java)
-                startActivity(intent)
-            }
-        }.start()
     }
 
 }
