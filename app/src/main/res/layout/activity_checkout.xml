@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25sp"
                 android:layout_weight="1"
-                android:background="@drawable/pucherogif" />
+                android:background="@drawable/iconpucherito" />
 
         </LinearLayout>
     </LinearLayout>

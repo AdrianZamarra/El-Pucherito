@@ -31,7 +31,11 @@ class OrderActivity : AppCompatActivity() {
             startActivity(intent)
         } )
 
-        imageMenu!!.setOnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  }
+        val imageArrow : ImageView?= findViewById(R.id.imageArrow)
+        imageArrow!!.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this, RestaurantsActivity::class.java)
+            startActivity(intent)
+        } )
 
         val btnLogOut : Button = findViewById(R.id.btn_logout)
         btnLogOut.setOnClickListener {logOut(this)}
