@@ -86,7 +86,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
                 }
             }.start()
         }
-        Toast.makeText(this, getString(R.string.invalidUser), Toast.LENGTH_SHORT).show()
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
 
