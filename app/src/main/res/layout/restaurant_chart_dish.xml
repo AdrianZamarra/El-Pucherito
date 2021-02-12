@@ -17,13 +17,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="7">
 
             <TextView
                 android:id="@+id/restaurant_dish_name"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center|center_horizontal"
+                android:layout_weight="2"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center|center_horizontal"
                 android:text="@string/test_name"
@@ -31,8 +33,9 @@
 
             <TextView
                 android:id="@+id/restaurant_dish_price"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="5"
                 android:background="@drawable/border"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center|center_horizontal|center_vertical"
@@ -46,12 +49,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="7">
 
             <TextView
                 android:id="@+id/restaurant_dish_description"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="2"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center|center_vertical"
@@ -62,10 +67,11 @@
 
             <ImageButton
                 android:id="@+id/restaurant_dish_buy"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="3dp"
+                android:layout_marginEnd="3dp"
 
+                android:layout_weight="5"
                 android:backgroundTint="@color/Garnet"
                 android:contentDescription="@string/a_adir_al_carrito_imagen"
                 android:gravity="center|center_horizontal"
