@@ -74,21 +74,23 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
 
         }else{
 
+
+
             Thread {
 
-                var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+                val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
                 val user = db.userDao().getValidateUser(email, pass)
-
-                var shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(user.user_id!!)
 
                 if (user != null) {
 
+                    val shoppingCart: ShoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(
+                        user.user_id!!)
                     user.logged = 1
                     db.userDao().updateUser(user)
 
                     launch {
                         if(shoppingCart == null){
-                            db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1,user.user_id!!))
+                            db.shoppingCartDao().insertShoppingCart(ShoppingCart(null,null,1, user.user_id!!))
                         }
                     }
 
@@ -97,7 +99,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
 
                 }
             }.start()
+
         }
+
+
+
         loginEtEmail?.setText("")
         loginEtPassword?.setText("")
     }

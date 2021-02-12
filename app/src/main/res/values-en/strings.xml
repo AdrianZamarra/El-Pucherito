@@ -17,8 +17,10 @@
 
     <!---->
     <string name="login">Log In</string>
-    <string name="signin">Sign in</string>
-    <string name="signoff">Sign off</string>
+    <string name="signin">Sign up</string>
+
+
+    <string name="signoff">Sign out</string>
     <string name="savechanges">Save</string>
     <string name="next">Next</string>
 
@@ -57,5 +59,17 @@
     <string name="restaurantimage">RestaurantImage</string>
     <string name="tiempo_de_entrega">Delivery time:</string>
 
+    <string name="non_existing_products">There are any orders</string>
+    <string name="product_added">Product added</string>
+    <string name="product_added_information">The product has been added correctly to the cart.</string>
+    <string name="keep_buying">Keep buying</string>
+    <string name="go_shopping_cart">Go shopping cart</string>
+    <string name="a_adir_al_carrito_imagen">Add cart image</string>
+    <string name="must_fill">¡You have to fill al fields!</string>
+    <string name="pedidos_realizados">REALIZED ORDERS</string>
+    <string name="categoria">Category:</string>
+    <string name="resta">-</string>
+    <string name="suma">+</string>
+    <string name="orders">Orders</string>
 
 </resources>
