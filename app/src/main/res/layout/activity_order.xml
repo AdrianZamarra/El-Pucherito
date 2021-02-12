@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<<<<<<< HEAD
+=======
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/layoutToolBar2"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/Garnet"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+>>>>>>> 78a983c4ef16189ffe025b5825a0d3b6133cc71f
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,7 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+<<<<<<< HEAD
      >
+=======
+        tools:context=".activities.shoppingcart.OrderActivity">
+>>>>>>> 78a983c4ef16189ffe025b5825a0d3b6133cc71f
 
         <LinearLayout
             android:id="@+id/layoutToolBar"
@@ -19,7 +40,6 @@
             android:padding="15dp"
             android:paddingEnd="15dp"
             app:layout_constraintTop_toTopOf="parent">
-
             <ImageView
                 android:id="@+id/imageArrow"
                 android:layout_width="40dp"
@@ -27,7 +47,10 @@
                 android:contentDescription="@string/app_name"
                 android:paddingLeft="15dp"
                 android:src="@drawable/ic_arrow_back" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78a983c4ef16189ffe025b5825a0d3b6133cc71f
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
@@ -39,6 +62,7 @@
                 android:textSize="23sp"
                 android:textStyle="bold" />
 
+<<<<<<< HEAD
             <ImageView
                 android:id="@+id/img_carrito"
                 android:layout_width="37dp"
@@ -46,8 +70,11 @@
                 android:layout_marginLeft="140dp"
                 android:src="@drawable/ic_shopping_white" />
 
+=======
+>>>>>>> 78a983c4ef16189ffe025b5825a0d3b6133cc71f
 
         </LinearLayout>
+    </LinearLayout>
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -69,4 +96,7 @@
         android:dividerHeight="0.5dp" />
 </RelativeLayout>
     </LinearLayout>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78a983c4ef16189ffe025b5825a0d3b6133cc71f
