@@ -25,25 +25,12 @@ class OrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
 
-        val imageCart : ImageView?= findViewById(R.id.img_carrito)
-        imageCart!!.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, ShoppingCartActivity::class.java)
+        val imageArrow : ImageView = findViewById(R.id.imageArrow)
+
+        imageArrow.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this, RestaurantsActivity::class.java)
             startActivity(intent)
-        } )
-
-        imageMenu!!.setOnClickListener {drawerLayout?.openDrawer(GravityCompat.START)  }
-
-        val btnLogOut : Button = findViewById(R.id.btn_logout)
-        btnLogOut.setOnClickListener {logOut(this)}
-
-        val btnOrder : Button = findViewById(R.id.btn_order)
-        btnOrder.setOnClickListener {
-            var intent = Intent(this, OrderActivity::class.java)
-            startActivity(intent)
-        }
-
-        val modifyProfile : Button = findViewById(R.id.btn_modify)
-        modifyProfile.setOnClickListener {modifyView(this)}
+        })
 
         title = "KotlinApp"
         expandableListView = findViewById(R.id.expendableList)
@@ -90,22 +77,12 @@ class OrderActivity : AppCompatActivity() {
                 false
             }
         }
-    }
-    private fun logOut(context: Context) {
-        Thread {
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
 
-            val user = db.userDao().getLoggedUser()
-                user.logged = 0
-                db.userDao().updateUser(user)
-                var intent = Intent(context, LoginActivity::class.java)
-                startActivity(intent)
-        }.start()
+
+
+
     }
-    private fun modifyView(context: Context){
-        var intent = Intent(context, ModifyProfile::class.java)
-        startActivity(intent)
-    }
+
     private fun getDatesOrders() : MutableMap<String, List<String>>{
 
         var dateOrders : MutableMap<String, List<String>> = HashMap()
@@ -127,7 +104,6 @@ class OrderActivity : AppCompatActivity() {
                 }
                 mutableList.add("Precio Total ${totalPrice}€")
                 totalPrice = 0f
-
 
                 dateOrders[it.purchase_date!!.toString()] = mutableList
 
