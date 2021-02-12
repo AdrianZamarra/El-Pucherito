@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="245dp"
             android:layout_gravity="center"
-            android:text="Modificar" />
+            android:text="@string/modifyUser" />
 
 
     </com.google.android.material.navigation.NavigationView>

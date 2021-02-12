@@ -89,6 +89,10 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
         }.start()
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this, RestaurantsActivity::class.java))
+    }
+
     override fun onPause() {
         super.onPause()
         finish()
