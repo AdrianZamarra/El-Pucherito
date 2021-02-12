@@ -1,21 +1,16 @@
 package com.ttt.elpucherito.activities.shoppingcart
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
-import com.ttt.elpucherito.activities.users.LoginActivity
-import com.ttt.elpucherito.activities.users.ModifyProfile
 import com.ttt.elpucherito.db.ElPucheritoDB
-import kotlinx.android.synthetic.main.activity_order.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
-import kotlin.concurrent.thread
 
 class OrderActivity : AppCompatActivity() {
     private var expandableListView: ExpandableListView? = null
@@ -32,17 +27,17 @@ class OrderActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-        title = "KotlinApp"
+        //title = "KotlinApp"
         expandableListView = findViewById(R.id.expendableList)
         if (expandableListView != null) {
             val listData = getDatesOrders()
             var tvEmpty:TextView = findViewById(R.id.tv_empty_order)
             if(listData.isEmpty()){
 
-                tvEmpty.setText("No existe ningun pedido")
+                tvEmpty.text = getString(R.string.non_existing_products)
 
             }else{
-                tvEmpty.setText("")
+                tvEmpty.text = ""
             }
             titleList = ArrayList(listData.keys)
             adapter = OrderExpandableListAdapter(this, titleList as ArrayList<String>, listData)
@@ -93,7 +88,6 @@ class OrderActivity : AppCompatActivity() {
                 var mutableList: MutableList<String> = ArrayList()
                 var dishes = db.dishShoppingCartDao().getDishesWithShoppingCartID(it.shopping_cart_id!!)
                 dishes.forEach {
-
                     var dish = db.dishDao().getDishByID(it.dish_id)
                     mutableList.add("${dish.name} \n  \n ${dish.price}€ \n")
                     totalPrice += dish.price
@@ -101,8 +95,9 @@ class OrderActivity : AppCompatActivity() {
                 mutableList.add("Precio Total ${totalPrice}€")
                 totalPrice = 0f
 
-                dateOrders[it.purchase_date!!.toString()] = mutableList
-
+                val formatter = SimpleDateFormat("dd-MM-yyyy HH:mm")
+                val time = it.purchase_date
+                dateOrders[formatter.format(time!!).toString()] = mutableList
             }
         }.start()
 
@@ -119,5 +114,4 @@ class OrderActivity : AppCompatActivity() {
         super.onPause()
         this.finish()
     }
-
 }
