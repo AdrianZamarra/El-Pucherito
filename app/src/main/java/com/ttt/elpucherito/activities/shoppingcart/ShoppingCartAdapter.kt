@@ -33,6 +33,7 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         holder.quantity.text = currentItem.quantity.toString()
         holder.buy.text = quantity.toString() + "€"
 
+
         holder.bind(currentItem, context)
     }
 
@@ -42,6 +43,7 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
         val quantity : TextView = itemView.findViewById(R.id.shoppingcart_item_quantity)
         val quantitySubstractButton : Button = itemView.findViewById(R.id.shoppingcart_btn_substract)
         val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
+        val removeDishButton : Button = itemView.findViewById(R.id.shoppingcart_item_delete)
 
         // BOTON PARA QUITAR DEL CARRITO
         val deleteItemButton : ImageView = itemView.findViewById(R.id.shoppingcart_item_delete)
@@ -105,6 +107,18 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
                     tvTotal.text = (tvTotal.text.toString().toFloat() - dishItem.price.toFloat()).toString()
                 }
             }
+            deleteItemButton.setOnClickListener(View.OnClickListener {
+                Thread {
+                    val db = ElPucheritoDB.getInstance(context)
+                    val activeUser = db.userDao().getLoggedUser()
+                   // db.dishShoppingCartDao().getDishesWithShoppingCartID()
+
+                }.start()
+
+
+
+            })
+
         }
     }
 }
