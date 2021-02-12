@@ -22,7 +22,7 @@ class CheckoutActivity : AppCompatActivity() {
 
 
         val tvAddres : TextView = findViewById(R.id.checkout_tv_address)
-        val btnReturn : Button = findViewById(R.id.checkout_btn_return)
+        val btnReturn : ImageView = findViewById(R.id.btnBack)
         val tvArrive : TextView = findViewById(R.id.checkout_tv_succesfull)
 
         val random = (15..60).random()
@@ -40,7 +40,10 @@ class CheckoutActivity : AppCompatActivity() {
             tvAddres.text = user.address
 
         }.start()
+    }
 
-
+    override fun onBackPressed() {
+        var intent = Intent(this, RestaurantsActivity::class.java)
+        startActivity(intent)
     }
 }
