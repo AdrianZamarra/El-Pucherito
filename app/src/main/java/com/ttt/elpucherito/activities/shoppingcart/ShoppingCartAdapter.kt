@@ -49,8 +49,6 @@ class ShoppingCartAdapter(private val dishesList : List<DishItem>, private val c
 
         fun bind(dishItem : DishItem, context: Context) {
 
-
-
             quantityAddButton.setOnClickListener {
                 val newQuantity = Integer.parseInt(quantity.text.toString()) + 1
                 quantity.text = newQuantity.toString()
