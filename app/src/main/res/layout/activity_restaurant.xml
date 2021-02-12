@@ -31,6 +31,17 @@
             android:progressBackgroundTint="#8D8A8A8A"
             android:progressTint="@color/Gold" />
 
+        <TextView
+            android:id="@+id/restaurant_tv_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="@string/prueba"
+            android:textColor="#EFEFEF"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
     <LinearLayout

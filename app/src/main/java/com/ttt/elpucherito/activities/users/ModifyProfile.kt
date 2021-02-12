@@ -83,8 +83,6 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
             }
 
             db.userDao().updateUser(user)
-
-            println(user)
             startActivity(Intent(this, RestaurantsActivity::class.java))
         }.start()
     }

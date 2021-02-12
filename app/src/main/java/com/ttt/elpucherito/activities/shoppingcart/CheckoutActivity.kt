@@ -30,10 +30,9 @@ class CheckoutActivity : AppCompatActivity() {
             val user = db.userDao().getLoggedUser()
 
             val quantity = intent.getSerializableExtra("quantity") as Int
-            val totalTime = 15 + quantity
+            val totalTime = 15 + (quantity * 2)
             tvArrive.append("$totalTime Mins")
             tvAddres.text = user.address
-
         }.start()
     }
 

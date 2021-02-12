@@ -61,10 +61,6 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     private fun getTotalPrice() : String {
 
         var   totalPrice = 0f
@@ -86,7 +82,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
         }.start()
 
         Thread.sleep(80)
-        return totalPrice.toString()
+        return totalPrice.toString() + "€"
     }
 
     override val coroutineContext: CoroutineContext

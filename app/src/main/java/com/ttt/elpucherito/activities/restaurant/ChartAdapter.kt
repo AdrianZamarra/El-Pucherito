@@ -91,7 +91,6 @@ class ChartAdapter(private val dishesList : List<DishItem>, private val context:
                 launch{
 
                     if (shoppingCart != null) {
-
                         db.dishShoppingCartDao().insertDishesShoppingCarts(DishShoppingCartRef(dish_id,shoppingCart.shopping_cart_id!!,1))
                     }
                 }
