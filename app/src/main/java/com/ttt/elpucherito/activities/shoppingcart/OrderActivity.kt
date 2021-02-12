@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 import com.ttt.elpucherito.db.ElPucheritoDB
+import com.ttt.elpucherito.db.entities.DishShoppingCartRef
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -43,34 +44,6 @@ class OrderActivity : AppCompatActivity() {
             adapter = OrderExpandableListAdapter(this, titleList as ArrayList<String>, listData)
 
             expandableListView!!.setAdapter(adapter)
-            expandableListView!!.setOnGroupExpandListener { groupPosition ->
-                Toast.makeText(
-                    applicationContext,
-                    (titleList as ArrayList<String>)[groupPosition] + " List Expanded.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            expandableListView!!.setOnGroupCollapseListener { groupPosition ->
-                Toast.makeText(
-                    applicationContext,
-                    (titleList as ArrayList<String>)[groupPosition] + " List Collapsed.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-            expandableListView!!.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->
-                Toast.makeText(
-                    applicationContext,
-                    "Clicked: " + (titleList as ArrayList<String>)[groupPosition] + " -> " + listData[(
-                            titleList as
-                                    ArrayList<String>
-                            )
-                            [groupPosition]]!!.get(
-                        childPosition
-                    ),
-                    Toast.LENGTH_SHORT
-                ).show()
-                false
-            }
         }
     }
 
@@ -85,12 +58,14 @@ class OrderActivity : AppCompatActivity() {
             var totalPrice = 0f
             orders.forEach{
 
-                var mutableList: MutableList<String> = ArrayList()
-                var dishes = db.dishShoppingCartDao().getDishesWithShoppingCartID(it.shopping_cart_id!!)
+                val mutableList: MutableList<String> = ArrayList()
+                val dishes = db.dishShoppingCartDao().getDishesWithShoppingCartID(it.shopping_cart_id!!)
+
                 dishes.forEach {
+                    var quantity = db.dishShoppingCartDao().getDishQuantityWithDishIDAndShoppingCartID(it.dish_id,it.shopping_cart_id)
                     var dish = db.dishDao().getDishByID(it.dish_id)
-                    mutableList.add("${dish.name} \n  \n ${dish.price}€ \n")
-                    totalPrice += dish.price
+                    mutableList.add("${dish.name} \n  \n ${dish.price}€ x $quantity \n")
+                    totalPrice += dish.price * quantity
                 }
                 mutableList.add("Precio Total ${totalPrice}€")
                 totalPrice = 0f
@@ -103,7 +78,7 @@ class OrderActivity : AppCompatActivity() {
 
         Thread.sleep(100)
 
-        return TreeMap(dateOrders)
+        return TreeMap(dateOrders).toSortedMap(reverseOrder())
     }
 
     override fun onBackPressed() {

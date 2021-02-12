@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.ttt.elpucherito.R
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.User
@@ -58,28 +59,46 @@ class SignActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope {
         val name = signEtName?.text.toString()
         val surname = signEtSurname?.text.toString()
         val address = signEtAddress?.text.toString()
-        val phone = signEtPhone?.text.toString().toInt()
+        val phone = signEtPhone?.text.toString()
         val email = signEtEmail?.text.toString()
         val pass = signEtPassword?.text.toString()
 
-        var user = User(null, name, surname, address, phone, email, pass,0)
+        if (name.equals("") || surname.equals("") || address.equals("") || phone.equals("") || email.equals("") || pass.equals("") ){
+            signEtName?.setText("")
+            signEtSurname?.setText("")
+            signEtAddress?.setText("")
+            signEtEmail?.setText("")
+            signEtPassword?.setText("")
+            signEtPhone?.setText("")
 
-        println(user.name)
-        Thread {
+            Toast.makeText(this,"¡Tienes que rellenar todos los campos!",Toast.LENGTH_SHORT).show()
+        }else{
+            val user = User(null, name, surname, address, phone.toInt(), email, pass,0)
 
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+            Thread {
 
-            launch {
-                db.userDao().insertUser(user)
-            }
-        }.start()
+                val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+
+                launch {
+                    db.userDao().insertUser(user)
+                }
+            }.start()
+            val logScreen = Intent(this, LoginActivity::class.java)
+            startActivity(logScreen)
+        }
     }
     override fun onClick(p0: View?) {
         collectData()
+    }
 
-        val logScreen = Intent(this,
-            LoginActivity::class.java)
-        startActivity(logScreen)
+    override fun onBackPressed() {
+        val intent = Intent(this,LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 
 }

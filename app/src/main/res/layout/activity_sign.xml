@@ -46,26 +46,23 @@ android:background="@color/Garnet"
 
             <TextView
                 android:id="@+id/sign_tv_signin"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/signin"
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
-
         </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
 
 
                 <LinearLayout
@@ -82,12 +79,13 @@ android:background="@color/Garnet"
                         android:layout_marginRight="90sp"
                         android:background="@drawable/et_box"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:hint="@string/name"
                         android:inputType="textPersonName"
-                        android:minHeight="50dp"
 
-                        android:textSize="18sp" />
+                        android:minHeight="50dp"
+                        android:textSize="18sp"
+                        android:autofillHints="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -104,12 +102,13 @@ android:background="@color/Garnet"
                         android:layout_marginRight="90sp"
                         android:background="@drawable/et_box"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:hint="@string/surname"
                         android:inputType="textPersonName"
-                        android:minHeight="50dp"
 
-                        android:textSize="18sp" />
+                        android:minHeight="50dp"
+                        android:textSize="18sp"
+                        android:autofillHints="" />
 
                 </LinearLayout>
 
@@ -127,12 +126,13 @@ android:background="@color/Garnet"
                         android:layout_marginRight="90sp"
                         android:background="@drawable/et_box"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:hint="@string/address"
                         android:inputType="textPersonName"
-                        android:minHeight="50dp"
 
-                        android:textSize="18sp" />
+                        android:minHeight="50dp"
+                        android:textSize="18sp"
+                        android:autofillHints="" />
 
                 </LinearLayout>
 
@@ -148,11 +148,12 @@ android:background="@color/Garnet"
                         android:layout_marginLeft="90sp"
                         android:layout_marginTop="50sp"
                         android:layout_marginRight="90sp"
+                        android:autofillHints=""
                         android:background="@drawable/et_box"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:hint="@string/email"
-                        android:inputType="textPersonName"
+                        android:inputType="textWebEmailAddress|textPersonName|textEmailAddress"
                         android:minHeight="50dp" />
 
                 </LinearLayout>
@@ -171,12 +172,13 @@ android:background="@color/Garnet"
                         android:layout_marginRight="90sp"
                         android:background="@drawable/et_box"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:hint="@string/password"
-                        android:inputType="textPersonName|textWebPassword"
-                        android:minHeight="50dp"
+                        android:inputType="textPersonName|textPassword|textWebPassword"
 
-                        android:textSize="18sp" />
+                        android:minHeight="50dp"
+                        android:textSize="18sp"
+                        android:autofillHints="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,36 +195,37 @@ android:background="@color/Garnet"
                         android:layout_marginRight="90sp"
                         android:background="@drawable/et_box"
                         android:ems="10"
-                        android:gravity="center"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:hint="@string/phone"
                         android:inputType="number|textPersonName"
-                        android:minHeight="50dp"
 
-                        android:textSize="18sp" />
+                        android:minHeight="50dp"
+                        android:textSize="18sp"
+                        android:autofillHints="" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/sign_btn_enter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="150sp"
-                        android:layout_marginTop="60sp"
-                        android:layout_marginRight="130sp"
+                        android:layout_margin="32dp"
                         android:background="@drawable/btn_login"
+                        android:gravity="center|center_horizontal|center_vertical"
                         android:minWidth="90dp"
                         android:minHeight="70dp"
                         android:text="@string/signin"
                         android:textSize="12sp" />
                 </LinearLayout>
 
-
             </LinearLayout>
         </ScrollView>
+
     </LinearLayout>
 
 </LinearLayout>

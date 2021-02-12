@@ -11,6 +11,7 @@ import com.ttt.elpucherito.activities.restaurants.RestaurantsActivity
 
 import com.ttt.elpucherito.db.ElPucheritoDB
 import com.ttt.elpucherito.db.entities.ShoppingCart
+import com.ttt.elpucherito.db.entities.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,6 +31,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, CoroutineScope 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        Thread {
+            val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+            val user: User = db.userDao().getLoggedUser()
+            if (user != null) {
+                var intent = Intent(this, RestaurantsActivity::class.java)
+                startActivity(intent)
+            }
+        }.start()
 
         loginTvLogin = findViewById(R.id.login_tv_login)
         loginEtEmail = findViewById(R.id.login_et_email)
