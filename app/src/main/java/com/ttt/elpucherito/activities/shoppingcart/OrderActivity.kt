@@ -77,10 +77,6 @@ class OrderActivity : AppCompatActivity() {
                 false
             }
         }
-
-
-
-
     }
 
     private fun getDatesOrders() : MutableMap<String, List<String>>{
