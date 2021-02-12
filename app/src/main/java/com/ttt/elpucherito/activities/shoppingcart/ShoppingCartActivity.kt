@@ -76,8 +76,13 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
 
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     private fun getTotalPrice() : String {
-        var totalPrice = 0f
+
+        var   totalPrice = 0f
         Thread {
             val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user: User = db.userDao().getLoggedUser()
@@ -97,7 +102,7 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             }
         }.start()
 
-        Thread.sleep(20)
+        Thread.sleep(80)
         return totalPrice.toString()
     }
 
@@ -157,4 +162,5 @@ class ShoppingCartActivity : AppCompatActivity(), CoroutineScope{
             }
         }.start()
     }
+
 }

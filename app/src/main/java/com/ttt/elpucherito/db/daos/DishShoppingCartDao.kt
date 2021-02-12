@@ -23,4 +23,7 @@ interface DishShoppingCartDao {
 
     @Query("DELETE FROM dishes_shopping_carts")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM dishes_shopping_carts where dish_id=:dishID")
+    fun deleteWithDishID(dishID:Int)
 }
