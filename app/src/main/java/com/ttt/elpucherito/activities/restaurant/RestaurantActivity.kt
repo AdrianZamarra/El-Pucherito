@@ -3,7 +3,6 @@ package com.ttt.elpucherito.activities.restaurant
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
@@ -87,7 +86,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         dishes = getDishesFromRestaurant(restaurant)
 
         val recyclerView : RecyclerView = findViewById(R.id.restaurant_chart_dishes)
-        recyclerView.adapter = ChartAdapter(dishes,this)
+        recyclerView.adapter = MenuAdapter(dishes,this)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
     }
