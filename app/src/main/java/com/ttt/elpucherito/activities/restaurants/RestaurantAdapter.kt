@@ -60,7 +60,6 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
                 }
         }.start()
         Thread.sleep(10)
-        println(finalAssessment)
         return finalAssessment / nAssesments
     }
 
@@ -71,7 +70,7 @@ class RestaurantAdapter(private val restaurantsList : List<RestaurantItem>, priv
         val category : TextView = itemView.findViewById(R.id.restaurants_tv_category)
         fun bind(restaurant : RestaurantItem, context: Context) {
             image.setOnClickListener {
-                var intent = Intent(context, RestaurantActivity::class.java)
+                val intent = Intent(context, RestaurantActivity::class.java)
                 intent.putExtra("Restaurant", restaurant)
                 context.startActivity(intent)
             }

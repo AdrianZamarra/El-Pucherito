@@ -32,31 +32,23 @@ class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private v
 
         holder.title.text = currentItem.title
         holder.quantity.text = currentItem.quantity.toString()
-        holder.buy.text = quantity.toString() + "€"
+        holder.buy.text = "${quantity}€"
 
-        holder.removeDishButton.setOnClickListener(View.OnClickListener {
+        holder.removeDishButton.setOnClickListener {
             Thread {
                 val db = ElPucheritoDB.getInstance(context)
-                val activeUser = db.userDao().getLoggedUser()
-                val shoppingCart = db.shoppingCartDao().getActiveShoppingCartFromUserID(activeUser.user_id!!)
-                val dishesShoppingCarts: List<DishShoppingCartRef> = db.dishShoppingCartDao().getDishesWithShoppingCartID(shoppingCart.shopping_cart_id!!)
-
                 db.dishShoppingCartDao().deleteWithDishID(currentItem.dish_id)
 
                 dishesList.removeAt(holder.adapterPosition);
 
                 notifyItemRemoved(holder.adapterPosition);
-                notifyItemRangeChanged(holder.adapterPosition,getItemCount());
-
-
+                notifyItemRangeChanged(holder.adapterPosition, itemCount);
 
             }.start()
             context as Activity
             val tvTotal : TextView= context.findViewById(R.id.tv_precio)
-            tvTotal.text = (tvTotal.text.toString().toFloat() - (currentItem.price.toFloat()*holder.quantity.text.toString().toFloat())).toString()
-
-        })
-
+            tvTotal.text = (tvTotal.text.toString().replace("€","").toFloat() - (currentItem.price.toFloat()*holder.quantity.text.toString().toFloat())).toString() + "€"
+        }
 
         holder.bind(currentItem, context)
     }
@@ -69,10 +61,6 @@ class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private v
         val buy : TextView = itemView.findViewById(R.id.shoppingcart_item_price)
         val removeDishButton : ImageView = itemView.findViewById(R.id.shoppingcart_item_delete)
 
-        // BOTON PARA QUITAR DEL CARRITO
-        val deleteItemButton : ImageView = itemView.findViewById(R.id.shoppingcart_item_delete)
-
-
         fun bind(dishItem : DishItem, context: Context) {
 
             quantityAddButton.setOnClickListener {
@@ -80,7 +68,7 @@ class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private v
                 quantity.text = newQuantity.toString()
 
                 val price = dishItem.price.toFloat() * quantity.text.toString().toInt()
-                buy.text = price.toString() + "€"
+                buy.text = """${price}€"""
 
                 Thread{
                     val db = ElPucheritoDB.getInstance(context)
@@ -98,7 +86,7 @@ class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private v
 
                 context as Activity
                 val tvTotal : TextView= context.findViewById(R.id.tv_precio)
-                tvTotal.text = (tvTotal.text.toString().toFloat() + dishItem.price.toFloat()).toString()
+                tvTotal.text = (tvTotal.text.toString().replace("€","").toFloat() + dishItem.price.toFloat()).toString() + "€"
 
             }
 
@@ -109,7 +97,7 @@ class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private v
                     quantity.text = newQuantity.toString()
 
                     val price = dishItem.price.toFloat() * quantity.text.toString().toInt()
-                    buy.text = price.toString() + "€"
+                    buy.text = """${price}€"""
                     Thread{
                         val db = ElPucheritoDB.getInstance(context)
                         val activeUser = db.userDao().getLoggedUser()
@@ -123,17 +111,12 @@ class ShoppingCartAdapter(private val dishesList :ArrayList<DishItem>, private v
                             }
                         }
                     }.start()
-                    //context.startActivity(Intent(context, ShoppingCartActivity::class.java))
+
                     context as Activity
                     val tvTotal : TextView= context.findViewById(R.id.tv_precio)
-                    tvTotal.text = (tvTotal.text.toString().toFloat() - dishItem.price.toFloat()).toString()
+                    tvTotal.text = (tvTotal.text.toString().replace("€","").toFloat() - dishItem.price.toFloat()).toString() + "€"
                 }
             }
-
-
-
-
         }
-
     }
 }

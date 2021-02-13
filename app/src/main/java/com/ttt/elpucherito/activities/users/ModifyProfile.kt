@@ -45,7 +45,7 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
 
 
         btnArrowBack!!.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, RestaurantsActivity::class.java)
+            val intent = Intent(this, RestaurantsActivity::class.java)
             startActivity(intent)
         })
 
@@ -58,16 +58,16 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
     }
 
     fun updateUser() {
-        var name = modifyEtName?.text.toString()
-        var surname = modifyEtSurname?.text.toString()
-        var address = modifyEtAddress?.text.toString()
-        var email = modifyEtEmail?.text.toString()
-        var password = modifyEtPassword?.text.toString()
-        var phone = modifyEtPhone?.text.toString()
+        val name = modifyEtName?.text.toString()
+        val surname = modifyEtSurname?.text.toString()
+        val address = modifyEtAddress?.text.toString()
+        val email = modifyEtEmail?.text.toString()
+        val password = modifyEtPassword?.text.toString()
+        val phone = modifyEtPhone?.text.toString()
 
         Thread {
 
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
+            val db: ElPucheritoDB = ElPucheritoDB.getInstance(this)
             val user = db.userDao().getLoggedUser()
 
             if (name != "") {
@@ -90,8 +90,6 @@ class ModifyProfile : AppCompatActivity(), View.OnClickListener {
             }
 
             db.userDao().updateUser(user)
-
-            println(user)
             startActivity(Intent(this, RestaurantsActivity::class.java))
         }.start()
     }

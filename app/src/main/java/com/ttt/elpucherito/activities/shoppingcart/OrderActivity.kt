@@ -23,16 +23,15 @@ class OrderActivity : AppCompatActivity() {
 
         val imageArrow : ImageView = findViewById(R.id.imageArrow)
 
-        imageArrow.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, RestaurantsActivity::class.java)
+        imageArrow.setOnClickListener{
+            val intent = Intent(this, RestaurantsActivity::class.java)
             startActivity(intent)
-        })
+        }
 
-        //title = "KotlinApp"
         expandableListView = findViewById(R.id.expendableList)
         if (expandableListView != null) {
             val listData = getDatesOrders()
-            var tvEmpty:TextView = findViewById(R.id.tv_empty_order)
+            val tvEmpty:TextView = findViewById(R.id.tv_empty_order)
             if(listData.isEmpty()){
 
                 tvEmpty.text = getString(R.string.non_existing_products)
@@ -49,7 +48,7 @@ class OrderActivity : AppCompatActivity() {
 
     private fun getDatesOrders() : MutableMap<String, List<String>>{
 
-        var dateOrders : MutableMap<String, List<String>> = HashMap()
+        val dateOrders : MutableMap<String, List<String>> = HashMap()
         Thread {
 
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)

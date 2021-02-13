@@ -38,7 +38,7 @@
                 android:background="@drawable/btn_quantity"
                 android:minWidth="5dp"
                 android:minHeight="10dp"
-                android:text="-" />
+                android:text="@string/resta" />
 
             <TextView
                 android:id="@+id/shoppingcart_item_quantity"
@@ -57,7 +57,7 @@
                 android:background="@drawable/btn_quantity"
                 android:minWidth="5dp"
                 android:minHeight="10dp"
-                android:text="+" />
+                android:text="@string/suma" />
         </LinearLayout>
 
         <TextView

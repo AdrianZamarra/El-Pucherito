@@ -110,6 +110,8 @@ class MenuAdapter(private val dishesList: List<DishItem>, private val context: C
                                 1
                             )
                         )
+                        db.dishShoppingCartDao().insertDishesShoppingCarts(DishShoppingCartRef(dish_id,shoppingCart.shopping_cart_id!!,1))
+
                     }
                 }
             }.start()

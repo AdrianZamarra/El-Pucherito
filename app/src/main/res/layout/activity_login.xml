@@ -95,8 +95,7 @@
                             android:gravity="center"
                             android:hint="@string/password"
                             android:inputType="textPersonName|textWebPassword"
-                            android:minHeight="60dp"
-                            android:textSize="18sp" />
+                            android:minHeight="60dp" />
                 </LinearLayout>
 
                 <LinearLayout

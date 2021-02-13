@@ -28,7 +28,6 @@ import com.ttt.elpucherito.db.entities.Restaurant
 class RestaurantsActivity : AppCompatActivity() {
 
     var nameProfile : TextView?= null
-    var menu : Menu?= null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +42,12 @@ class RestaurantsActivity : AppCompatActivity() {
 
         val drawerLayout : DrawerLayout? = findViewById(R.id.drawerLayout)
         val imageMenu : ImageView?= findViewById(R.id.imageMenu)
-
         val imageCart : ImageView?= findViewById(R.id.img_carrito)
-        imageCart!!.setOnClickListener(View.OnClickListener {
+
+        imageCart!!.setOnClickListener{
             val intent = Intent(this, ShoppingCartActivity::class.java)
             startActivity(intent)
-        } )
+        }
 
         nameProfile = this.findViewById(R.id.nameProfile)
         nameProfile?.text = ""
@@ -59,7 +58,7 @@ class RestaurantsActivity : AppCompatActivity() {
             val user = db.userDao().getLoggedUser()
 
             nameProfile!!.append(user.name)
-            var navigationView : NavigationView = findViewById(R.id.navigationView)
+            val navigationView : NavigationView = findViewById(R.id.navigationView)
 
             navigationView.menu.findItem(R.id.menuSurname).setVisible(false).title = user.surname
             navigationView.menu.findItem(R.id.menuPhone).title = user.phonenum.toString()
@@ -76,7 +75,7 @@ class RestaurantsActivity : AppCompatActivity() {
 
         val btnOrder : Button = findViewById(R.id.btn_order)
         btnOrder.setOnClickListener {
-            var intent = Intent(this, OrderActivity::class.java)
+            val intent = Intent(this, OrderActivity::class.java)
             startActivity(intent)
         }
 
@@ -111,30 +110,25 @@ class RestaurantsActivity : AppCompatActivity() {
 
     private fun logOut(context: Context) {
         Thread {
-            var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
+            val db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
 
             val user = db.userDao().getLoggedUser()
             if (user != null) {
-
                 user.logged = 0
                 db.userDao().updateUser(user)
-                var intent = Intent(context, LoginActivity::class.java)
+                val intent = Intent(context, LoginActivity::class.java)
                 startActivity(intent)
             }
         }.start()
     }
 
     private fun modifyView(context: Context){
-        var intent = Intent(context, ModifyProfile::class.java)
+        val intent = Intent(context, ModifyProfile::class.java)
         startActivity(intent)
     }
 
     override fun onBackPressed() {
         finish()
-    }
-    private fun showShoppingCart(context: Context){
-        var intent = Intent(context, ShoppingCartActivity::class.java)
-        startActivity(intent)
     }
 
     override fun onPause() {

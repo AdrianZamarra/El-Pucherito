@@ -3,6 +3,7 @@ package com.ttt.elpucherito.activities.restaurant
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
@@ -22,9 +23,6 @@ import kotlin.coroutines.CoroutineContext
 
 class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
-
-
-
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main
 
@@ -35,8 +33,17 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
         val restaurantAvatar : LinearLayout = findViewById(R.id.restaurant_lo_image)
         val restaurantTvName : TextView  = findViewById(R.id.restaurant_tv_name)
         val restaurantAssesment : RatingBar = findViewById(R.id.restaurant_ratingbar)
+        val restaurantAddress : TextView = findViewById(R.id.restaurant_tv_address)
 
-        var restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
+
+        val arrowImage : ImageView = findViewById(R.id.imageArrow)
+
+        arrowImage.setOnClickListener{
+            var intent = Intent(this, RestaurantsActivity::class.java)
+            startActivity(intent)
+        }
+
+        val restaurant = intent.getSerializableExtra("Restaurant") as RestaurantItem
 
         Thread{
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
@@ -49,34 +56,33 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
             }
         }.start()
 
-        var context : Context = this
+        val context : Context = this
 
-        restaurantAssesment.setOnRatingBarChangeListener( object : RatingBar.OnRatingBarChangeListener {
-            override fun onRatingChanged(p0: RatingBar?, p1: Float, p2: Boolean) {
-                Thread {
-                    var db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
-                    var userMail = db.userDao().getLoggedUser().email
-                    val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userMail, restaurant.resturant_id!!)
-                    launch {
-                        if (assesment != null){
-                            assesment.rating = p1
-                            db.assessmentDao().updateAssessment(assesment)
-                        }else{
-                            db.assessmentDao().insertAssessments(
-                                Assessment(
-                                    null,
-                                    userMail,
-                                    p1,
-                                    restaurant.resturant_id!!
-                                )
+        restaurantAssesment.setOnRatingBarChangeListener { p0, p1, p2 ->
+            Thread {
+                val db: ElPucheritoDB = ElPucheritoDB.getInstance(context)
+                val userMail = db.userDao().getLoggedUser().email
+                val assesment = db.assessmentDao().getAssessmentByEmailAndRestaurantID(userMail, restaurant.resturant_id!!)
+                launch {
+                    if (assesment != null){
+                        assesment.rating = p1
+                        db.assessmentDao().updateAssessment(assesment)
+                    }else{
+                        db.assessmentDao().insertAssessments(
+                            Assessment(
+                                null,
+                                userMail,
+                                p1,
+                                restaurant.resturant_id!!
                             )
-                        }
+                        )
                     }
-                }.start()
-            }
-        })
+                }
+            }.start()
+        }
 
         restaurantTvName.text = restaurant.name
+        restaurantAddress.text = restaurant.address
 
         val id = this.resources.getIdentifier(restaurant.image, "drawable", this.packageName)
         restaurantAvatar.setBackgroundResource(id)
@@ -93,7 +99,7 @@ class RestaurantActivity : AppCompatActivity(), CoroutineScope {
 
     private fun getDishesFromRestaurant(restaurant : RestaurantItem) : ArrayList<DishItem> {
         var dishList : List<RestaurantWithDishes>
-        var dishItems : ArrayList<DishItem> = ArrayList()
+        val dishItems : ArrayList<DishItem> = ArrayList()
         Thread {
             val db : ElPucheritoDB = ElPucheritoDB.getInstance(this)
             dishList = db.restaurantDao().getDishes()
